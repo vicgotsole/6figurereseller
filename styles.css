@@ -122,6 +122,27 @@ summary{cursor:pointer;font-weight:600}
 
 .fineprint{color:var(--muted);font-size:.9rem;margin-top:10px}
 
+/* --------------- About Section (updated) --------------- */
+.about{padding: clamp(48px, 8vw, 96px) 0; background: radial-gradient(1000px 300px at 10% 0%, rgba(124,58,237,.12), transparent);}
+.about-inner{
+  display:grid;
+  grid-template-columns: 1.1fr 1.4fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items:center;
+}
+.about-media{justify-self:center}
+.about-media img{
+  width:auto;          /* don't stretch */
+  max-width:260px;     /* smaller desktop size */
+  height:auto;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  object-fit:cover;
+}
+.about-copy .pill{display:none} /* ensure the "About Victor" pill is hidden */
+.about-copy h2{margin:0 0 12px}
+.about-cta{display:flex;gap:16px;margin-top:8px}
+
 /* ---------------- Mobile (<= 960px) ---------------- */
 @media (max-width: 960px){
   /* Layout stacks */
@@ -157,4 +178,9 @@ summary{cursor:pointer;font-weight:600}
 
   /* prevent body scroll when menu open (optional) */
   body.nav-open{overflow:hidden}
+
+  /* About image even smaller on mobile */
+  .about-inner{grid-template-columns:1fr}
+  .about-media{order:-1}
+  .about-media img{max-width:220px}
 }
