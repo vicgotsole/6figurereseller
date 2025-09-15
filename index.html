@@ -9,6 +9,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Case Studies styles (move to styles.css if you prefer) -->
+  <style>
+    :root{
+      --bg:#0b0d10;--card:#111418;--muted:#aab3c0;--text:#e9eef6;--brand:#34d399;--ring:rgba(52,211,153,.3)
+    }
+    .case-studies{padding:64px 0;background:var(--bg);color:var(--text)}
+    .case-studies .section-eyebrow{display:inline-block;background:#0f1320;border:1px solid #1a1f25;color:var(--muted);padding:6px 10px;border-radius:999px;margin-bottom:8px}
+    .case-studies h2{font-size:2rem;margin:8px 0 24px}
+    .case-grid{display:grid;gap:20px}
+    .case-card{display:flex;gap:20px;align-items:stretch;background:var(--card);border:1px solid #1a1f25;border-radius:14px;overflow:hidden}
+    .case-media{width:40%;min-height:220px;background:#0f1320;display:flex;align-items:center;justify-content:center}
+    .case-media img{width:100%;height:100%;object-fit:cover;display:block}
+    .case-placeholder{width:100%;height:100%;display:grid;place-items:center;color:var(--muted)}
+    .case-body{width:60%;padding:18px 18px 20px}
+    .case-body h3{margin:0 0 6px;font-size:1.05rem;font-weight:800}
+    .case-body h4{margin:0 0 10px;color:var(--brand);font-weight:800}
+    .case-body p{margin:0 0 14px;color:var(--muted)}
+    .case-meta{display:flex;gap:12px;align-items:center}
+    .pill-badge{display:inline-block;font-size:.85rem;border:1px solid #1a1f25;background:#0f1320;color:var(--muted);padding:4px 8px;border-radius:999px}
+    @media (max-width:960px){
+      .case-card{flex-direction:column}
+      .case-media,.case-body{width:100%}
+      .case-media{height:240px}
+    }
+  </style>
+
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -88,10 +115,9 @@
     <div class="container about-inner">
       <div class="about-media">
         <!-- Place your image at: ./assets/aboutme.png -->
-        <img src="assets/aboutme.png" alt="Victor Chemerisov — Founder of 6 Figure Reseller" loading="lazy">
+        <img src="assets/aboutme.png" alt="Victor — Founder of 6 Figure Reseller" loading="lazy">
       </div>
       <div class="about-copy">
-        <!-- removed the 'About Victor' pill per request -->
         <h2>Hi, I’m Victor — founder of <span class="nowrap">6 Figure Reseller</span>.</h2>
         <p>Over the last 12 years, I’ve built a reselling business that has generated more than $5,000,000 in sales on eBay alone. What started as a side hustle quickly became a full-time career, and along the way I learned exactly what it takes to create a consistent, scalable, and profitable reselling business.</p>
         <p>Like many resellers, I started small—selling items I had around the house and flipping finds from thrift stores. Over time, I refined my systems for sourcing, listing, pricing, and shipping until I was running a streamlined operation that produced predictable results. Those lessons weren’t learned overnight; they came through trial, error, and the discipline to treat reselling like a real business instead of a hobby.</p>
@@ -280,6 +306,62 @@
       <div class="guarantee-card">
         <h3>ROI-first promise</h3>
         <p>If you complete your action items and don’t see measurable improvement in 60 days, I’ll work with you at no extra cost until you do.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES (added here, right above FAQ) -->
+  <section id="case-studies" class="case-studies">
+    <div class="container">
+      <div class="section-eyebrow">Student Results</div>
+      <h2>Real Results From Real Resellers</h2>
+
+      <div class="case-grid">
+        <!-- CASE 1: Jaxson (using assets/jackson.png) -->
+        <article class="case-card">
+          <div class="case-media">
+            <img src="assets/jackson.png" alt="Jaxson — 20-year-old college student from Texas">
+          </div>
+          <div class="case-body">
+            <h3>Jaxson Warren, 20 — Texas</h3>
+            <h4>$55,000 in 6 months reselling vintage clothing on eBay</h4>
+            <p>Jaxson turned his side hustle into a thriving business by applying the systems from the <strong>6 Figure Reseller Program</strong>. In just six months, he generated over <strong>$55,000</strong> in sales selling vintage clothing on eBay—while staying on top of his college coursework. Sourcing routines, optimized listings, and simple KPIs made the difference.</p>
+            <div class="case-meta">
+              <span class="pill-badge">eBay · Vintage Clothing</span>
+              <span class="pill-badge">First 6 Months</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- CASE 2: Placeholder -->
+        <article class="case-card">
+          <div class="case-media">
+            <div class="case-placeholder">Photo coming soon</div>
+          </div>
+          <div class="case-body">
+            <h3>Case Study #2 — Coming Soon</h3>
+            <h4>Another reseller who scaled with our playbook</h4>
+            <p>We’ll share another student’s story here soon—showing how consistent listing, pricing frameworks, and weekly KPIs turn effort into predictable results.</p>
+            <div class="case-meta">
+              <span class="pill-badge">In Progress</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- CASE 3: Placeholder -->
+        <article class="case-card">
+          <div class="case-media">
+            <div class="case-placeholder">Photo coming soon</div>
+          </div>
+          <div class="case-body">
+            <h3>Case Study #3 — Coming Soon</h3>
+            <h4>From side hustle to six-figure systems</h4>
+            <p>This slot will highlight another student’s journey to consistent, scalable revenue using the exact tools and processes you’ll learn in the program.</p>
+            <div class="case-meta">
+              <span class="pill-badge">In Progress</span>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
