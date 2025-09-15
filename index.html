@@ -25,14 +25,14 @@
     .case-media{
       width:40%;
       background:#0f1320;
-      padding:14px;                 /* frame padding (matches About vibe) */
+      padding:14px;
       display:grid;
       place-items:center;
     }
     .case-media img{
       width:100%;
-      height:auto;                  /* never force height */
-      object-fit:contain;           /* keep entire image visible */
+      height:auto;
+      object-fit:contain;
       border-radius:12px;
       box-shadow:0 8px 24px rgba(0,0,0,.25);
     }
@@ -42,13 +42,13 @@
     .case-body h3{margin:0 0 6px;font-size:1.05rem;font-weight:800}
     .case-body h4{margin:0 0 10px;color:var(--brand);font-weight:800}
     .case-body p{margin:0 0 14px;color:var(--muted)}
-    .case-meta{display:flex;gap:12px;align-items:center}
+    .case-meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
     .pill-badge{display:inline-block;font-size:.85rem;border:1px solid #1a1f25;background:#0f1320;color:var(--muted);padding:4px 8px;border-radius:999px}
 
     @media (max-width:960px){
       .case-card{flex-direction:column}
       .case-media,.case-body{width:100%}
-      .case-media{padding:16px}      /* a bit more padding on small screens */
+      .case-media{padding:16px}
       .case-media img{max-height:none}
     }
   </style>
@@ -333,7 +333,7 @@
       <h2>Real Results From Real Resellers</h2>
 
       <div class="case-grid">
-        <!-- CASE 1: Jaxson (assets/jackson.png) -->
+        <!-- CASE 1: Jaxson -->
         <article class="case-card">
           <div class="case-media">
             <img src="assets/jackson.png" alt="Jaxson — 20-year-old college student from Texas">
@@ -349,17 +349,19 @@
           </div>
         </article>
 
-        <!-- CASE 2: Placeholder -->
+        <!-- CASE 2: Linda -->
         <article class="case-card">
           <div class="case-media">
-            <div class="case-placeholder">Photo coming soon</div>
+            <img src="assets/linda.png" alt="Linda — single mom from Rhode Island">
           </div>
           <div class="case-body">
-            <h3>Case Study #2 — Coming Soon</h3>
-            <h4>Another reseller who scaled with our playbook</h4>
-            <p>We’ll share another student’s story here soon—showing how consistent listing, pricing frameworks, and weekly KPIs turn effort into predictable results.</p>
+            <h3>Linda M., Rhode Island — Single Mom</h3>
+            <h4>$87,000 profit in her first year with our Complete Coaching + Wholesale supply</h4>
+            <p>Linda came to us looking for something dependable she could run around her family’s schedule. She chose our <strong>Complete Coaching</strong> package and partnered with us for a monthly supply of curated wholesale items to resell. With clear weekly goals, step-by-step systems, and a reliable product pipeline, Linda finished her first year with <strong>$87,000 in profit</strong>—and, most importantly, the confidence and stability to keep growing on her terms.</p>
             <div class="case-meta">
-              <span class="pill-badge">In Progress</span>
+              <span class="pill-badge">Complete Coaching</span>
+              <span class="pill-badge">Wholesale Supply</span>
+              <span class="pill-badge">Year 1 · $87k Profit</span>
             </div>
           </div>
         </article>
