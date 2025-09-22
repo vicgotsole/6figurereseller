@@ -10,33 +10,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Case Studies styles (ok inline; move to styles.css if you prefer) -->
+  <!-- Section-specific styles (fine inline; move to styles.css if you prefer) -->
   <style>
     :root{ --bg:#0b0d10; --card:#111418; --muted:#aab3c0; --text:#e9eef6; --brand:#34d399; --ring:rgba(52,211,153,.3) }
 
+    /* ---- Case Studies ---- */
     .case-studies{padding:64px 0;background:var(--bg);color:var(--text)}
     .case-studies .section-eyebrow{display:inline-block;background:#0f1320;border:1px solid #1a1f25;color:var(--muted);padding:6px 10px;border-radius:999px;margin-bottom:8px}
     .case-studies h2{font-size:2rem;margin:8px 0 24px}
-
     .case-grid{display:grid;gap:20px}
     .case-card{display:flex;gap:20px;align-items:stretch;background:var(--card);border:1px solid #1a1f25;border-radius:14px;overflow:hidden}
-
-    /* —— NO CROPPING: frame + contain —— */
-    .case-media{
-      width:40%;
-      background:#0f1320;
-      padding:14px;
-      display:grid;
-      place-items:center;
-    }
-    .case-media img{
-      width:100%;
-      height:auto;
-      object-fit:contain;
-      border-radius:12px;
-      box-shadow:0 8px 24px rgba(0,0,0,.25);
-    }
-
+    .case-media{width:40%;background:#0f1320;padding:14px;display:grid;place-items:center}
+    .case-media img{width:100%;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
     .case-placeholder{width:100%;min-height:220px;display:grid;place-items:center;color:var(--muted)}
     .case-body{width:60%;padding:18px 18px 20px}
     .case-body h3{margin:0 0 6px;font-size:1.05rem;font-weight:800}
@@ -50,6 +35,35 @@
       .case-media,.case-body{width:100%}
       .case-media{padding:16px}
       .case-media img{max-height:none}
+    }
+
+    /* ---- Wholesale Subscription (new section) ---- */
+    .wholesale{padding:56px 0;background:radial-gradient(1100px 380px at 15% -10%, rgba(52,211,153,.08), transparent)}
+    .wh-card{
+      background:var(--card);
+      border:1px solid #1a1f25;
+      border-radius:16px;
+      padding:24px;
+      display:grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap:20px;
+      align-items:center;
+    }
+    .wh-copy h2{font-size:2rem;margin:0 0 10px}
+    .wh-copy p{color:var(--muted);margin:0 0 12px}
+    .wh-bullets{margin:8px 0 0;color:var(--muted);padding-left:1.1rem}
+    .wh-bullets li{margin:6px 0}
+    .wh-aside{
+      background:#0f1320;
+      border:1px solid #1a1f25;
+      border-radius:14px;
+      padding:18px;
+    }
+    .wh-aside h3{margin:0 0 6px;font-size:1.05rem}
+    .wh-aside .em{color:var(--brand);font-weight:800}
+    .wh-cta{margin-top:12px}
+    @media (max-width:960px){
+      .wh-card{grid-template-columns:1fr}
     }
   </style>
 
@@ -224,7 +238,7 @@
     </div>
   </section>
 
-  <!-- PRICING (updated to 6 plans) -->
+  <!-- PRICING (6 plans) -->
   <section id="pricing" class="pricing">
     <div class="container">
       <h2>Coaching options</h2>
@@ -298,6 +312,32 @@
         </div>
       </div>
       <p class="fineprint">SellEvo app includes inventory management, profit calculation, and multi-platform fee calculators.</p>
+    </div>
+  </section>
+
+  <!-- WHOLESALE SUBSCRIPTION (NEW – directly after the first coaching options) -->
+  <section id="wholesale" class="wholesale">
+    <div class="container">
+      <div class="wh-card">
+        <div class="wh-copy">
+          <h2>Reliable Inventory, Shipped Monthly</h2>
+          <p>Sourcing is the most time-consuming—and often the most stressful—part of reselling. Driving spot to spot, hunting for quality pieces, and competing on price can stall your momentum and eat your margins.</p>
+          <p>Our monthly <strong>Wholesale Subscription</strong> removes the guesswork. We curate and ship inventory to you at wholesale cost with a target resale of <strong>at least 3×</strong>—so you can focus on listing, offers, and operations.</p>
+          <ul class="wh-bullets">
+            <li>Hand-selected inventory by category and seasonality</li>
+            <li>Transparent manifests and simple per-unit pricing</li>
+            <li>Shipped monthly on your schedule—pause or scale anytime</li>
+          </ul>
+          <div class="wh-cta">
+            <a class="btn btn-lg" href="#apply">Get Started Now</a>
+          </div>
+        </div>
+        <aside class="wh-aside">
+          <h3>What you can expect</h3>
+          <p><span class="em">3× minimum resale</span> based on historical comps and category mix. We prioritize velocity and profit—no mystery boxes, no filler.</p>
+          <p>Perfect for sellers who want consistent pipeline without spending all weekend sourcing.</p>
+        </aside>
+      </div>
     </div>
   </section>
 
@@ -421,7 +461,7 @@
     </div>
   </section>
 
-  <!-- GET STARTED TODAY (new, above FAQ) -->
+  <!-- GET STARTED TODAY (above FAQ) -->
   <section id="get-started" class="pricing">
     <div class="container">
       <h2>Get started today!</h2>
