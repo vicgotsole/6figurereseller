@@ -2,55 +2,98 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>6 Figure Reseller — CMS</title>
 
-    <!-- Netlify Identity (handles login/signup for the CMS) -->
+    <!-- Netlify Identity (login/signup for CMS) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
     <style>
-      :root { --bg: #0b0d10; --text:#e9eef6; }
-      html, body { height: 100%; margin: 0; background: var(--bg); color: var(--text); }
-      body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-      /* Shown only until CMS mounts */
-      #fallback {
-        position: fixed; inset: 0; display: grid; place-items: center;
-        color: var(--text);
-      }
+      :root { --bg:#0b0d10; --text:#e9eef6; --muted:#aab3c0; }
+      html,body{height:100%;margin:0;background:var(--bg);color:var(--text);
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;}
+      #nc-root{min-height:100vh;}
+      #fallback{position:fixed;inset:0;display:grid;place-items:center;text-align:center}
+      #hint{position:fixed;left:12px;right:12px;bottom:12px;padding:10px 12px;border-radius:10px;
+        background:#111418;border:1px solid #1a1f25;color:var(--muted);font-size:14px}
+      code{background:#0f1320;padding:2px 6px;border-radius:6px}
     </style>
   </head>
   <body>
-    <!-- REQUIRED: Netlify CMS mounts into this element -->
+    <!-- REQUIRED mount point -->
     <div id="nc-root"></div>
 
-    <!-- Simple fallback while the CMS bundle loads -->
+    <!-- Fallback UI while things load -->
     <div id="fallback">Loading CMS…</div>
+    <div id="hint" style="display:none"></div>
 
     <script>
-      // After login, return to /admin/
+      // After Identity login, bounce back to /admin
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user) => {
           if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
+            window.netlifyIdentity.on("login", () => location.replace("/admin/"));
           }
         });
       }
-      // Hide fallback when CMS finishes booting
-      window.addEventListener("load", () => {
+
+      // Show a helpful hint at the bottom of the page
+      function showHint(msg) {
+        const el = document.getElementById('hint');
+        el.innerHTML = msg;
+        el.style.display = 'block';
+      }
+
+      // 1) Probe the config file early so we can tell you if it's missing
+      (async () => {
+        try {
+          const res = await fetch('/admin/config.yml', { cache: 'no-store' });
+          if (!res.ok) {
+            showHint(`Could not load <code>/admin/config.yml</code> (HTTP ${res.status}).
+              Make sure the file exists at <code>admin/config.yml</code> in your repo and is published.`);
+          }
+        } catch (e) {
+          showHint(`Network error fetching <code>/admin/config.yml</code>. If you're on a restricted network, try another connection or disable blockers.`);
+        }
+      })();
+
+      // 2) Load CMS bundle with a fallback CDN in case unpkg is blocked
+      function loadScript(src, onload, onerror) {
+        const s = document.createElement('script');
+        s.src = src;
+        s.onload = onload;
+        s.onerror = onerror;
+        document.head.appendChild(s);
+      }
+
+      function startCMS() {
+        // Hide fallback when CMS mounts content into #nc-root
         const obs = new MutationObserver(() => {
-          if (document.querySelector("#nc-root *")) {
-            const fb = document.getElementById("fallback");
-            if (fb) fb.style.display = "none";
+          if (document.querySelector('#nc-root *')) {
+            const fb = document.getElementById('fallback');
+            if (fb) fb.style.display = 'none';
             obs.disconnect();
           }
         });
-        obs.observe(document.getElementById("nc-root"), { childList: true, subtree: true });
-      });
-    </script>
+        obs.observe(document.getElementById('nc-root'), { childList: true, subtree: true });
+      }
 
-    <!-- Netlify CMS app bundle -->
-    <script src="https://unpkg.com/netlify-cms-app@^2.15.72/dist/netlify-cms.js"></script>
+      // Try unpkg first, then jsDelivr
+      loadScript(
+        'https://unpkg.com/netlify-cms-app@^2.15.72/dist/netlify-cms.js',
+        startCMS,
+        () => {
+          showHint('Primary CDN blocked. Switching to fallback…');
+          loadScript(
+            'https://cdn.jsdelivr.net/npm/netlify-cms-app@2.15.72/dist/netlify-cms.js',
+            startCMS,
+            () => showHint('Failed to load the CMS bundle from both CDNs. Check your network/ad-blockers.')
+          );
+        }
+      );
+    </script>
   </body>
 </html>
