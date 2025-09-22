@@ -1,0 +1,10 @@
+/* 
+  Content-Security-Policy: default-src 'self';
+    script-src 'self' https://identity.netlify.com https://cdn.jsdelivr.net https://unpkg.com;
+    connect-src 'self' https://identity.netlify.com https://api.netlify.com https://cdn.jsdelivr.net https://unpkg.com;
+    img-src 'self' data: blob:;
+    style-src 'self' 'unsafe-inline';
+    frame-src https://identity.netlify.com;
+    font-src 'self' data:;
+  Referrer-Policy: no-referrer-when-downgrade
+  X-Content-Type-Options: nosniff
