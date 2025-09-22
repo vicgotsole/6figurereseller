@@ -1,38 +1,56 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>6 Figure Reseller — CMS</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>6 Figure Reseller — CMS</title>
 
-  <!-- Netlify Identity (login) -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- Netlify Identity (handles login/signup for the CMS) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-  <!-- Netlify CMS app -->
-  <script src="https://unpkg.com/netlify-cms@^2/dist/netlify-cms.js"></script>
+    <style>
+      :root { --bg: #0b0d10; --text:#e9eef6; }
+      html, body { height: 100%; margin: 0; background: var(--bg); color: var(--text); }
+      body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+      /* Shown only until CMS mounts */
+      #fallback {
+        position: fixed; inset: 0; display: grid; place-items: center;
+        color: var(--text);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- REQUIRED: Netlify CMS mounts into this element -->
+    <div id="nc-root"></div>
 
-  <style>
-    html,body{height:100%;margin:0;background:#0b0d10}
-    .fallback{
-      display:grid;place-items:center;height:100%;
-      color:#e9eef6;font-family:system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif
-    }
-  </style>
-</head>
-<body>
-  <div class="fallback">Loading CMS…</div>
+    <!-- Simple fallback while the CMS bundle loads -->
+    <div id="fallback">Loading CMS…</div>
 
-  <script>
-    // Optional: after login, bounce back to /admin
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
+    <script>
+      // After login, return to /admin/
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", (user) => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+      // Hide fallback when CMS finishes booting
+      window.addEventListener("load", () => {
+        const obs = new MutationObserver(() => {
+          if (document.querySelector("#nc-root *")) {
+            const fb = document.getElementById("fallback");
+            if (fb) fb.style.display = "none";
+            obs.disconnect();
+          }
+        });
+        obs.observe(document.getElementById("nc-root"), { childList: true, subtree: true });
       });
-    }
-  </script>
-</body>
+    </script>
+
+    <!-- Netlify CMS app bundle -->
+    <script src="https://unpkg.com/netlify-cms-app@^2.15.72/dist/netlify-cms.js"></script>
+  </body>
 </html>
