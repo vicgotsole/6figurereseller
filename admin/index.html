@@ -1,99 +1,126 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>6 Figure Reseller — CMS</title>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>6 Figure Reseller — CMS</title>
 
-    <!-- Netlify Identity (login/signup for CMS) -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- Identity widget (login for CMS) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-    <style>
-      :root { --bg:#0b0d10; --text:#e9eef6; --muted:#aab3c0; }
-      html,body{height:100%;margin:0;background:var(--bg);color:var(--text);
-        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;}
-      #nc-root{min-height:100vh;}
-      #fallback{position:fixed;inset:0;display:grid;place-items:center;text-align:center}
-      #hint{position:fixed;left:12px;right:12px;bottom:12px;padding:10px 12px;border-radius:10px;
-        background:#111418;border:1px solid #1a1f25;color:var(--muted);font-size:14px}
-      code{background:#0f1320;padding:2px 6px;border-radius:6px}
-    </style>
-  </head>
-  <body>
-    <!-- REQUIRED mount point -->
-    <div id="nc-root"></div>
+  <!-- Optional perf hints for the CDNs we might use -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
-    <!-- Fallback UI while things load -->
-    <div id="fallback">Loading CMS…</div>
-    <div id="hint" style="display:none"></div>
+  <style>
+    :root { --bg:#0b0d10; --text:#e9eef6; --muted:#aab3c0; }
+    html,body{
+      height:100%; margin:0; background:var(--bg); color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    #nc-root{min-height:100vh;}
+    #fallback{position:fixed; inset:0; display:grid; place-items:center; text-align:center}
+    #hint{
+      position:fixed; left:12px; right:12px; bottom:12px; padding:10px 12px; border-radius:10px;
+      background:#111418; border:1px solid #1a1f25; color:var(--muted); font-size:14px; display:none;
+    }
+    code{background:#0f1320; padding:2px 6px; border-radius:6px}
+  </style>
+</head>
+<body>
+  <!-- REQUIRED mount point -->
+  <div id="nc-root"></div>
 
-    <script>
-      // After Identity login, bounce back to /admin
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => location.replace("/admin/"));
-          }
-        });
-      }
+  <!-- Fallback UI while things load -->
+  <div id="fallback">Loading CMS…</div>
+  <div id="hint"></div>
 
-      // Show a helpful hint at the bottom of the page
-      function showHint(msg) {
-        const el = document.getElementById('hint');
-        el.innerHTML = msg;
-        el.style.display = 'block';
-      }
-
-      // 1) Probe the config file early so we can tell you if it's missing
-      (async () => {
-        try {
-          const res = await fetch('/admin/config.yml', { cache: 'no-store' });
-          if (!res.ok) {
-            showHint(`Could not load <code>/admin/config.yml</code> (HTTP ${res.status}).
-              Make sure the file exists at <code>admin/config.yml</code> in your repo and is published.`);
-          }
-        } catch (e) {
-          showHint(`Network error fetching <code>/admin/config.yml</code>. If you're on a restricted network, try another connection or disable blockers.`);
+  <script>
+    // After Identity login, keep user on /admin
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => location.replace("/admin/"));
         }
-      })();
+      });
+    }
 
-      // 2) Load CMS bundle with a fallback CDN in case unpkg is blocked
-      function loadScript(src, onload, onerror) {
-        const s = document.createElement('script');
-        s.src = src;
-        s.onload = onload;
-        s.onerror = onerror;
-        document.head.appendChild(s);
-      }
+    function showHint(msg) {
+      const el = document.getElementById('hint');
+      el.innerHTML = msg;
+      el.style.display = 'block';
+    }
 
-      function startCMS() {
-        // Hide fallback when CMS mounts content into #nc-root
-        const obs = new MutationObserver(() => {
-          if (document.querySelector('#nc-root *')) {
-            const fb = document.getElementById('fallback');
-            if (fb) fb.style.display = 'none';
-            obs.disconnect();
-          }
-        });
-        obs.observe(document.getElementById('nc-root'), { childList: true, subtree: true });
-      }
-
-      // Try unpkg first, then jsDelivr
-      loadScript(
-        'https://unpkg.com/netlify-cms-app@^2.15.72/dist/netlify-cms.js',
-        startCMS,
-        () => {
-          showHint('Primary CDN blocked. Switching to fallback…');
-          loadScript(
-            'https://cdn.jsdelivr.net/npm/netlify-cms-app@2.15.72/dist/netlify-cms.js',
-            startCMS,
-            () => showHint('Failed to load the CMS bundle from both CDNs. Check your network/ad-blockers.')
+    // Check config.yml early for clearer errors
+    (async () => {
+      try {
+        const res = await fetch('/admin/config.yml', { cache: 'no-store' });
+        if (!res.ok) {
+          showHint(
+            `Could not load <code>/admin/config.yml</code> (HTTP ${res.status}). ` +
+            `Make sure the file exists at <code>admin/config.yml</code> in your repo and is published.`
           );
         }
+      } catch (e) {
+        showHint(
+          `Network error fetching <code>/admin/config.yml</code>. ` +
+          `If you're on a restricted network, try a different connection or disable blockers.`
+        );
+      }
+    })();
+
+    // Helper: load a script tag
+    function loadScript(src) {
+      return new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = src;
+        s.onload = resolve;
+        s.onerror = reject;
+        document.head.appendChild(s);
+      });
+    }
+
+    // Hide the fallback once CMS mounts content into #nc-root
+    function startCMSWatcher() {
+      const root = document.getElementById('nc-root');
+      const obs = new MutationObserver(() => {
+        if (root.querySelector('*')) {
+          const fb = document.getElementById('fallback');
+          if (fb) fb.style.display = 'none';
+          obs.disconnect();
+        }
+      });
+      obs.observe(root, { childList: true, subtree: true });
+    }
+
+    // Safety timer: if nothing loads for a while, show guidance
+    const safetyTimer = setTimeout(() => {
+      showHint(
+        'Still loading… If this persists, a content-security-policy or ad-blocker may be blocking CDNs. ' +
+        'Allow <code>unpkg.com</code> and <code>cdn.jsdelivr.net</code>, and <code>identity.netlify.com</code>.'
       );
-    </script>
-  </body>
+    }, 12000);
+
+    (async () => {
+      try {
+        // Try unpkg first
+        await loadScript('https://unpkg.com/netlify-cms-app@2.15.72/dist/netlify-cms.js');
+        startCMSWatcher();
+        clearTimeout(safetyTimer);
+      } catch {
+        showHint('Primary CDN blocked (unpkg). Trying jsDelivr…');
+        try {
+          await loadScript('https://cdn.jsdelivr.net/npm/netlify-cms-app@2.15.72/dist/netlify-cms.js');
+          startCMSWatcher();
+          clearTimeout(safetyTimer);
+        } catch {
+          showHint('Failed to load the CMS bundle from both CDNs. Check network/ad-blockers and your site CSP.');
+        }
+      }
+    })();
+  </script>
+</body>
 </html>
