@@ -1,126 +1,30 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>6 Figure Reseller — CMS</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>6 Figure Reseller — CMS</title>
 
-  <!-- Netlify Identity (required for Git Gateway auth) -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- Minimal styles (external file keeps CSP happy) -->
+    <link rel="stylesheet" href="/admin/admin.css" />
 
-  <!-- Optional: warm up the CDNs we might use for the CMS bundle -->
-  <link rel="preconnect" href="https://unpkg.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <!-- Netlify Identity (login/signup for CMS) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
 
-  <style>
-    :root { --bg:#0b0d10; --text:#e9eef6; --muted:#aab3c0; }
-    html,body{
-      height:100%; margin:0; background:var(--bg); color:var(--text);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    #nc-root{min-height:100vh;}
-    #fallback{position:fixed; inset:0; display:grid; place-items:center; text-align:center}
-    #hint{
-      position:fixed; left:12px; right:12px; bottom:12px; padding:10px 12px; border-radius:10px;
-      background:#111418; border:1px solid #1a1f25; color:var(--muted); font-size:14px; display:none;
-    }
-    code{background:#0f1320; padding:2px 6px; border-radius:6px}
-  </style>
-</head>
-<body>
-  <!-- Mount point required by Netlify CMS -->
-  <div id="nc-root"></div>
+    <!-- Netlify CMS app (CDN; allowed by CSP headers) -->
+    <script src="https://unpkg.com/netlify-cms-app@2.15.72/dist/netlify-cms.js" defer></script>
 
-  <!-- Fallback UI while CMS loads -->
-  <div id="fallback">Loading CMS…</div>
-  <div id="hint"></div>
-
-  <script>
-    // Keep user on /admin after login
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", (user) => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => location.replace("/admin/"));
-        }
-      });
-    }
-
-    function showHint(msg) {
-      const el = document.getElementById('hint');
-      el.innerHTML = msg;
-      el.style.display = 'block';
-    }
-
-    // Helpful early check: is /admin/config.yml reachable?
-    (async () => {
-      try {
-        const res = await fetch('/admin/config.yml', { cache: 'no-store' });
-        if (!res.ok) {
-          showHint(
-            `Could not load <code>/admin/config.yml</code> (HTTP ${res.status}). ` +
-            `Ensure the file exists at <code>admin/config.yml</code> in your repo and is published.`
-          );
-        }
-      } catch {
-        showHint(
-          `Network error fetching <code>/admin/config.yml</code>. ` +
-          `If you're on a restricted network, try a different connection or disable blockers.`
-        );
-      }
-    })();
-
-    // Load a script with Promise
-    function loadScript(src) {
-      return new Promise((resolve, reject) => {
-        const s = document.createElement('script');
-        s.src = src;
-        s.onload = resolve;
-        s.onerror = reject;
-        document.head.appendChild(s);
-      });
-    }
-
-    // Hide fallback once CMS renders into #nc-root
-    function watchCMSMount() {
-      const root = document.getElementById('nc-root');
-      const obs = new MutationObserver(() => {
-        if (root.querySelector('*')) {
-          const fb = document.getElementById('fallback');
-          if (fb) fb.style.display = 'none';
-          obs.disconnect();
-        }
-      });
-      obs.observe(root, { childList: true, subtree: true });
-    }
-
-    // Safety timer in case loading stalls
-    const safetyTimer = setTimeout(() => {
-      showHint(
-        'Still loading… If this persists, your Content-Security-Policy or ad-blocker may be blocking CDNs. ' +
-        'Allow <code>unpkg.com</code>, <code>cdn.jsdelivr.net</code>, and <code>identity.netlify.com</code>.'
-      );
-    }, 12000);
-
-    // Load Netlify CMS bundle (try unpkg, then jsDelivr)
-    (async () => {
-      try {
-        await loadScript('https://unpkg.com/netlify-cms-app@2.15.72/dist/netlify-cms.js');
-        watchCMSMount();
-        clearTimeout(safetyTimer);
-      } catch {
-        showHint('Primary CDN blocked (unpkg). Trying jsDelivr…');
-        try {
-          await loadScript('https://cdn.jsdelivr.net/npm/netlify-cms-app@2.15.72/dist/netlify-cms.js');
-          watchCMSMount();
-          clearTimeout(safetyTimer);
-        } catch {
-          showHint('Failed to load the CMS bundle from both CDNs. Check network/ad-blockers and your site CSP.');
-        }
-      }
-    })();
-  </script>
-</body>
+    <!-- Our small bootstrap (no inline JS) -->
+    <script src="/admin/boot.js" defer></script>
+  </head>
+  <body>
+    <div id="nc-root"></div>
+    <div id="fallback" class="fallback">Loading CMS…</div>
+    <div id="hint" class="hint" hidden></div>
+  </body>
 </html>
