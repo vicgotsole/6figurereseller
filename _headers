@@ -3,8 +3,6 @@
     img-src 'self' data: blob:;
     font-src 'self' https://fonts.gstatic.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    script-src 'self';
-    connect-src 'self';
   Referrer-Policy: no-referrer-when-downgrade
   X-Content-Type-Options: nosniff
 
@@ -23,7 +21,5 @@
       https://unpkg.com
       https://cdn.jsdelivr.net;
     frame-src https://identity.netlify.com;
-    base-uri 'self';
-    form-action 'self';
   Referrer-Policy: no-referrer-when-downgrade
   X-Content-Type-Options: nosniff
