@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Section-specific styles (fine inline; move to styles.css if you prefer) -->
+  <!-- Section-specific styles -->
   <style>
     :root{ --bg:#0b0d10; --card:#111418; --muted:#aab3c0; --text:#e9eef6; --brand:#34d399; --ring:rgba(52,211,153,.3) }
 
@@ -29,7 +29,6 @@
     .case-body p{margin:0 0 14px;color:var(--muted)}
     .case-meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
     .pill-badge{display:inline-block;font-size:.85rem;border:1px solid #1a1f25;background:#0f1320;color:var(--muted);padding:4px 8px;border-radius:999px}
-
     @media (max-width:960px){
       .case-card{flex-direction:column}
       .case-media,.case-body{width:100%}
@@ -37,34 +36,18 @@
       .case-media img{max-height:none}
     }
 
-    /* ---- Wholesale Subscription (new section) ---- */
+    /* ---- Wholesale Subscription ---- */
     .wholesale{padding:56px 0;background:radial-gradient(1100px 380px at 15% -10%, rgba(52,211,153,.08), transparent)}
-    .wh-card{
-      background:var(--card);
-      border:1px solid #1a1f25;
-      border-radius:16px;
-      padding:24px;
-      display:grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap:20px;
-      align-items:center;
-    }
+    .wh-card{background:var(--card);border:1px solid #1a1f25;border-radius:16px;padding:24px;display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:center}
     .wh-copy h2{font-size:2rem;margin:0 0 10px}
     .wh-copy p{color:var(--muted);margin:0 0 12px}
     .wh-bullets{margin:8px 0 0;color:var(--muted);padding-left:1.1rem}
     .wh-bullets li{margin:6px 0}
-    .wh-aside{
-      background:#0f1320;
-      border:1px solid #1a1f25;
-      border-radius:14px;
-      padding:18px;
-    }
+    .wh-aside{background:#0f1320;border:1px solid #1a1f25;border-radius:14px;padding:18px}
     .wh-aside h3{margin:0 0 6px;font-size:1.05rem}
     .wh-aside .em{color:var(--brand);font-weight:800}
     .wh-cta{margin-top:12px}
-    @media (max-width:960px){
-      .wh-card{grid-template-columns:1fr}
-    }
+    @media (max-width:960px){ .wh-card{grid-template-columns:1fr} }
   </style>
 
   <script type="application/ld+json">
@@ -76,12 +59,7 @@
     "description":"A coaching program for eBay resellers focused on repeatable sourcing, pricing, listing velocity, and operations that scale.",
     "coursePrerequisites":"Basic understanding of listing/selling on eBay",
     "educationalCredentialAwarded":"Certificate of Completion",
-    "hasCourseInstance":{
-      "@type":"CourseInstance",
-      "courseMode":"Online",
-      "startDate":"2025-10-01",
-      "endDate":"2026-01-15"
-    }
+    "hasCourseInstance":{"@type":"CourseInstance","courseMode":"Online","startDate":"2025-10-01","endDate":"2026-01-15"}
   }
   </script>
 </head>
@@ -315,7 +293,7 @@
     </div>
   </section>
 
-  <!-- WHOLESALE SUBSCRIPTION (NEW – directly after the first coaching options) -->
+  <!-- WHOLESALE SUBSCRIPTION -->
   <section id="wholesale" class="wholesale">
     <div class="container">
       <div class="wh-card">
@@ -349,34 +327,22 @@
       <form class="apply-form" name="coaching-apply" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="coaching-apply">
         <div class="form-grid">
-          <label>
-            <span>Full name</span>
-            <input required name="name" type="text" placeholder="Jane Doe">
-          </label>
-          <label>
-            <span>Email</span>
-            <input required name="email" type="email" placeholder="you@example.com">
-          </label>
+          <label><span>Full name</span><input required name="name" type="text" placeholder="Jane Doe"></label>
+          <label><span>Email</span><input required name="email" type="email" placeholder="you@example.com"></label>
           <label>
             <span>eBay monthly revenue</span>
             <select name="revenue" required>
               <option value="">Select one</option>
-              <option>&lt; $2k</option>
-              <option>$2k–$5k</option>
-              <option>$5k–$10k</option>
-              <option>$10k–$25k</option>
-              <option>$25k+</option>
+              <option>&lt; $2k</option><option>$2k–$5k</option><option>$5k–$10k</option>
+              <option>$10k–$25k</option><option>$25k+</option>
             </select>
           </label>
           <label>
             <span>Biggest bottleneck</span>
             <select name="bottleneck" required>
               <option value="">Select one</option>
-              <option>Sourcing</option>
-              <option>Listing velocity</option>
-              <option>Pricing / Offers</option>
-              <option>Time &amp; systems</option>
-              <option>Profit margins</option>
+              <option>Sourcing</option><option>Listing velocity</option><option>Pricing / Offers</option>
+              <option>Time &amp; systems</option><option>Profit margins</option>
             </select>
           </label>
           <label class="full">
@@ -407,61 +373,43 @@
       <h2>Real Results From Real Resellers</h2>
 
       <div class="case-grid">
-        <!-- CASE 1: Jaxson -->
+        <!-- CASE 1 -->
         <article class="case-card">
-          <div class="case-media">
-            <img src="assets/jackson.png" alt="Jaxson — 20-year-old college student from Texas">
-          </div>
+          <div class="case-media"><img src="assets/jackson.png" alt="Jaxson — 20-year-old college student from Texas"></div>
           <div class="case-body">
             <h3>Jaxson Warren, 20 — Texas</h3>
             <h4>$55,000 in 6 months reselling vintage clothing on eBay</h4>
             <p>Jaxson turned his side hustle into a thriving business by applying the systems from the <strong>6 Figure Reseller Program</strong>. In just six months, he generated over <strong>$55,000</strong> in sales selling vintage clothing on eBay—while staying on top of his college coursework. Sourcing routines, optimized listings, and simple KPIs made the difference.</p>
-            <div class="case-meta">
-              <span class="pill-badge">eBay · Vintage Clothing</span>
-              <span class="pill-badge">First 6 Months</span>
-            </div>
+            <div class="case-meta"><span class="pill-badge">eBay · Vintage Clothing</span><span class="pill-badge">First 6 Months</span></div>
           </div>
         </article>
 
-        <!-- CASE 2: Linda -->
+        <!-- CASE 2 -->
         <article class="case-card">
-          <div class="case-media">
-            <img src="assets/linda.png" alt="Linda — single mom from Rhode Island">
-          </div>
+          <div class="case-media"><img src="assets/linda.png" alt="Linda — single mom from Rhode Island"></div>
           <div class="case-body">
             <h3>Linda M., Rhode Island — Single Mom</h3>
             <h4>$87,000 profit in her first year with our Complete Coaching + Wholesale supply</h4>
             <p>Linda came to us looking for something dependable she could run around her family’s schedule. She chose our <strong>Complete Coaching</strong> package and partnered with us for a monthly supply of curated wholesale items to resell. With clear weekly goals, step-by-step systems, and a reliable product pipeline, Linda finished her first year with <strong>$87,000 in profit</strong>—and, most importantly, the confidence and stability to keep growing on her terms.</p>
-            <div class="case-meta">
-              <span class="pill-badge">Complete Coaching</span>
-              <span class="pill-badge">Wholesale Supply</span>
-              <span class="pill-badge">Year 1 · $87k Profit</span>
-            </div>
+            <div class="case-meta"><span class="pill-badge">Complete Coaching</span><span class="pill-badge">Wholesale Supply</span><span class="pill-badge">Year 1 · $87k Profit</span></div>
           </div>
         </article>
 
-        <!-- CASE 3: Tonya & Sheena (FAU) -->
+        <!-- CASE 3 -->
         <article class="case-card">
-          <div class="case-media">
-            <img src="assets/tonya.png" alt="Tonya &amp; Sheena — FAU students who scaled curated women’s clothing">
-          </div>
+          <div class="case-media"><img src="assets/tonya.png" alt="Tonya &amp; Sheena — FAU students who scaled curated women’s clothing"></div>
           <div class="case-body">
             <h3>Tonya &amp; Sheena — FAU Students</h3>
             <h4>$345,000 in sales in Year 1 reselling curated women’s clothing on eBay &amp; Poshmark</h4>
             <p>Both working as waitresses when they found the program, Tonya and Sheena decided to trust their eye for fashion and go all-in on curated used women’s clothing. With our sourcing frameworks, pricing playbooks, and weekly accountability, they built a streamlined operation that delivered <strong>$345,000 in sales in their first year</strong> across eBay and Poshmark—proof that great taste and great systems make a powerful team.</p>
-            <div class="case-meta">
-              <span class="pill-badge">eBay</span>
-              <span class="pill-badge">Poshmark</span>
-              <span class="pill-badge">Curated Women’s</span>
-              <span class="pill-badge">Year 1 · $345k Sales</span>
-            </div>
+            <div class="case-meta"><span class="pill-badge">eBay</span><span class="pill-badge">Poshmark</span><span class="pill-badge">Curated Women’s</span><span class="pill-badge">Year 1 · $345k Sales</span></div>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- GET STARTED TODAY (above FAQ) -->
+  <!-- GET STARTED TODAY -->
   <section id="get-started" class="pricing">
     <div class="container">
       <h2>Get started today!</h2>
@@ -542,26 +490,11 @@
   <section id="faq" class="faq">
     <div class="container">
       <h2>FAQ</h2>
-      <details>
-        <summary>Who is this for?</summary>
-        <p>Beginners to intermediate sellers who are committed to consistent listing and want systems that scale.</p>
-      </details>
-      <details>
-        <summary>How many students do you take?</summary>
-        <p>Limited per cohort to maintain quality. 1:1 slots are extremely limited.</p>
-      </details>
-      <details>
-        <summary>Do I need fancy tools?</summary>
-        <p>No. We focus on process, not shiny objects. Optional tools are suggested only when they clearly add ROI.</p>
-      </details>
-      <details>
-        <summary>What’s the time commitment?</summary>
-        <p>Most students succeed with 5–10 hours per week outside of calls.</p>
-      </details>
-      <details>
-        <summary>Is there a refund policy?</summary>
-        <p>Because this is a coaching engagement with limited seats, all sales are final. See the ROI-first promise above.</p>
-      </details>
+      <details><summary>Who is this for?</summary><p>Beginners to intermediate sellers who are committed to consistent listing and want systems that scale.</p></details>
+      <details><summary>How many students do you take?</summary><p>Limited per cohort to maintain quality. 1:1 slots are extremely limited.</p></details>
+      <details><summary>Do I need fancy tools?</summary><p>No. We focus on process, not shiny objects. Optional tools are suggested only when they clearly add ROI.</p></details>
+      <details><summary>What’s the time commitment?</summary><p>Most students succeed with 5–10 hours per week outside of calls.</p></details>
+      <details><summary>Is there a refund policy?</summary><p>Because this is a coaching engagement with limited seats, all sales are final. See the ROI-first promise above.</p></details>
     </div>
   </section>
 
@@ -580,8 +513,6 @@
   <!-- tiny helpers -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Hamburger toggle
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.getElementById('primary-nav');
     if (toggle && nav) {
@@ -591,26 +522,12 @@
         document.body.classList.toggle('nav-open', !open);
         nav.classList.toggle('open', !open);
       });
-      // Close menu when clicking a nav link
       nav.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', () => {
           toggle.setAttribute('aria-expanded', 'false');
           document.body.classList.remove('nav-open');
           nav.classList.remove('open');
         });
-      });
-    }
-  </script>
-   <!-- Netlify Identity Widget -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
       });
     }
   </script>
