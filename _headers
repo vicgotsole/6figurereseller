@@ -1,9 +1,7 @@
-/*
-  Content-Security-Policy: default-src 'self';
+/* 
   Referrer-Policy: no-referrer-when-downgrade
   X-Content-Type-Options: nosniff
 
 /admin/*
-  Content-Security-Policy: default-src * data: blob: 'unsafe-inline' 'unsafe-eval';
   Referrer-Policy: no-referrer-when-downgrade
   X-Content-Type-Options: nosniff
