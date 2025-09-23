@@ -1,37 +1,46 @@
-/* Minimal, modern styles for the coaching landing page */
+/* =============================
+   6-Figure Reseller — styles.css
+   Minimal, modern, CSP-friendly
+   ============================= */
+
+/* ---------- CSS Vars ---------- */
 :root{
   --bg:#0b0d10;
   --card:#111418;
   --muted:#aab3c0;
   --text:#e9eef6;
-  --brand:#34d399; /* minty green */
-  --brand-2:#7c3aed; /* accent */
+  --brand:#34d399;   /* minty green */
+  --brand-2:#7c3aed; /* accent purple */
   --ring: rgba(52,211,153,0.3);
 }
 
+/* ---------- Base ---------- */
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.5}
+html,body{
+  margin:0;padding:0;background:var(--bg);color:var(--text);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.5;
+}
 img{max-width:100%;display:block}
-
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
+.fineprint{color:var(--muted);font-size:.9rem;margin-top:10px}
 
-/* ---------------- Header / Nav ---------------- */
+/* ---------- Header / Nav ---------- */
 .site-header{
   position:sticky; top:0;
   background:rgba(11,13,16,.7);
   backdrop-filter:saturate(180%) blur(10px);
   border-bottom:1px solid #1a1f25;
   z-index:50;
-  padding:10px 0; /* breathing room for tall logos */
+  padding:10px 0;
 }
 .nav{
-  position:relative; /* for the mobile dropdown to anchor */
+  position:relative;
   display:flex; align-items:center; justify-content:space-between;
   height:auto;
 }
-
 .brand{display:flex;gap:10px;align-items:center;font-weight:700;text-decoration:none;color:inherit}
-.brand img{width:auto;height:200px} /* large desktop logo */
+.brand img{width:auto;height:200px}
 .brand span{white-space:nowrap}
 
 /* desktop nav links */
@@ -40,17 +49,20 @@ img{max-width:100%;display:block}
 .nav-links a:hover{color:var(--text)}
 
 /* Buttons */
-.btn{display:inline-block;padding:12px 18px;border-radius:10px;background:var(--brand);color:#0b0d10;text-decoration:none;font-weight:700;box-shadow:0 0 0 0px transparent;transition:transform .06s ease, box-shadow .2s ease}
+.btn{
+  display:inline-block;padding:12px 18px;border-radius:10px;
+  background:var(--brand);color:#0b0d10;text-decoration:none;font-weight:700;
+  box-shadow:0 0 0 0px transparent;transition:transform .06s ease, box-shadow .2s ease
+}
 .btn:hover{transform:translateY(-1px);box-shadow:0 8px 28px -12px var(--ring)}
 .btn-sm{padding:8px 12px}
 .btn-lg{padding:14px 22px;font-size:1.05rem}
 .btn-link{background:transparent;color:var(--text);text-decoration:underline}
 .btn-full{width:100%;text-align:center}
 
-/* Hamburger button (hidden on desktop) */
+/* Hamburger (mobile) */
 .menu-toggle{
-  display:none;
-  width:44px; height:44px;
+  display:none; width:44px; height:44px;
   border:1px solid #1a1f25; border-radius:10px;
   background:#0f1320; color:var(--text);
   align-items:center; justify-content:center;
@@ -58,10 +70,16 @@ img{max-width:100%;display:block}
 }
 .menu-toggle .bar{display:block;width:20px;height:2px;background:var(--text)}
 .menu-toggle .bar + .bar{margin-top:4px}
-/* subtle focus/active */
 .menu-toggle[aria-expanded="true"]{box-shadow:0 0 0 4px var(--ring)}
 
-/* --------------- Hero & Shared Sections --------------- */
+/* ---------- Shared Section Bits ---------- */
+.pill{display:inline-block;background:#0f1320;border:1px solid #1a1f25;color:var(--muted);padding:6px 10px;border-radius:999px;margin-bottom:6px}
+.proof{padding:56px 0}
+.proof h2,.program h2,.curriculum h2,.pricing h2,.apply h2,.faq h2,.about h2,.case-studies h2{font-size:2rem;margin:10px 0 18px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+
+/* ---------- Hero ---------- */
 .hero{padding:72px 0;background:radial-gradient(1200px 400px at 20% -10%, rgba(124,58,237,.25), transparent)}
 .hero-inner{display:grid;grid-template-columns: 1.4fr 1fr;gap:36px;align-items:center}
 .hero h1{font-size:2.5rem;line-height:1.1;margin:0 0 14px}
@@ -76,31 +94,34 @@ img{max-width:100%;display:block}
 .stat-label{color:var(--muted)}
 .card-note{margin-top:8px;color:var(--muted);font-size:.95rem}
 
-.pill{display:inline-block;background:#0f1320;border:1px solid #1a1f25;color:var(--muted);padding:6px 10px;border-radius:999px;margin-bottom:6px}
-.proof{padding:56px 0}
-.proof h2,.program h2,.curriculum h2,.pricing h2,.apply h2,.faq h2,.about h2,.case-studies h2{font-size:2rem;margin:10px 0 18px}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+/* ---------- Proof / Features ---------- */
 .feature{background:var(--card);border:1px solid #1a1f25;padding:18px;border-radius:14px;color:var(--muted)}
 .feature h3{margin:0 0 8px;color:var(--text)}
 
+/* ---------- Program ---------- */
 .program{padding:56px 0;background:radial-gradient(1200px 400px at 80% 0%, rgba(52,211,153,.10), transparent)}
 .steps{display:grid;gap:14px}
 .step{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid #1a1f25;padding:16px;border-radius:14px}
 .badge{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--brand);color:#0b0d10;font-weight:800}
 
+/* ---------- Curriculum ---------- */
 .curriculum{padding:56px 0}
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .checklist{margin:0;padding-left:1.1rem;color:var(--muted)}
 .checklist li{margin:6px 0}
 
+/* ---------- Pricing ---------- */
 .pricing{padding:56px 0}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.price-card{background:var(--card);border:1px solid #1a1f25;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.price-card{
+  background:var(--card);border:1px solid #1a1f25;border-radius:14px;
+  padding:18px;display:flex;flex-direction:column;gap:14px
+}
 .pc-head{font-weight:800}
 .pc-price{font-size:1.3rem;color:var(--brand);font-weight:800}
 .pc-features{margin:0;padding-left:1.1rem;color:var(--muted)}
 .pc-featured{border-color:rgba(124,58,237,.35);box-shadow:0 10px 36px -18px rgba(124,58,237,.35)}
 
+/* ---------- Apply ---------- */
 .apply{padding:56px 0}
 .apply-form{background:var(--card);border:1px solid #1a1f25;border-radius:14px;padding:18px}
 .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
@@ -109,70 +130,125 @@ img{max-width:100%;display:block}
 input,select,textarea{background:#0f1320;border:1px solid #1a1f25;border-radius:10px;color:var(--text);padding:10px}
 input:focus,select:focus,textarea:focus{outline:none;box-shadow:0 0 0 4px var(--ring);border-color:rgba(52,211,153,.45)}
 
+/* ---------- Guarantee ---------- */
 .guarantee{padding:24px 0 64px}
-.guarantee-card{background:linear-gradient(180deg, rgba(52,211,153,.12), rgba(124,58,237,.10));border:1px solid #20313a;padding:18px;border-radius:14px;color:var(--text)}
+.guarantee-card{
+  background:linear-gradient(180deg, rgba(52,211,153,.12), rgba(124,58,237,.10));
+  border:1px solid #20313a;padding:18px;border-radius:14px;color:var(--text)
+}
 
+/* ---------- FAQ ---------- */
 .faq{padding:56px 0}
 details{background:var(--card);border:1px solid #1a1f25;border-radius:12px;padding:12px;margin:10px 0}
 summary{cursor:pointer;font-weight:600}
 
+/* ---------- Footer ---------- */
 .site-footer{border-top:1px solid #1a1f25}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0;color:var(--muted)}
 
-.fineprint{color:var(--muted);font-size:.9rem;margin-top:10px}
-
-/* --------------- About Section --------------- */
+/* ---------- About ---------- */
 .about{padding: clamp(48px, 8vw, 96px) 0; background: radial-gradient(1000px 300px at 10% 0%, rgba(124,58,237,.12), transparent);}
 .about-inner{
-  display:grid;
-  grid-template-columns: 1.1fr 1.4fr;
-  gap: clamp(24px, 4vw, 48px);
-  align-items:center;
+  display:grid; grid-template-columns: 1.1fr 1.4fr;
+  gap: clamp(24px, 4vw, 48px); align-items:center;
 }
 .about-media{justify-self:center}
 .about-media img{
-  width:auto;
-  max-width:260px;
-  height:auto;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
-  object-fit:cover;
+  width:auto; max-width:260px; height:auto; border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25); object-fit:cover;
 }
 .about-copy .pill{display:none}
 .about-copy h2{margin:0 0 12px}
 .about-cta{display:flex;gap:16px;margin-top:8px}
 
-/* --------------- Case Studies --------------- */
+/* ---------- Case Studies ---------- */
 .case-studies{padding:56px 0}
 .cs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .cs-card{
-  background:var(--card);
-  border:1px solid #1a1f25;
-  border-radius:16px;
-  overflow:hidden;
-  display:flex;flex-direction:column;
+  background:var(--card); border:1px solid #1a1f25; border-radius:16px;
+  overflow:hidden; display:flex;flex-direction:column;
 }
-.cs-media{
-  background:#0f1320;           /* same dark frame as About */
-  padding:16px;                  /* adds breathing room */
-}
+.cs-media{background:#0f1320; padding:16px}
 .cs-media img{
-  width:100%;
-  height:auto;                   /* never force height */
-  object-fit:contain;            /* NO CROPPING on mobile */
-  border-radius:12px;            /* match About rounded feel */
-  box-shadow:0 8px 24px rgba(0,0,0,.25);
+  width:100%; height:auto; object-fit:contain;
+  border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.25);
 }
 .cs-body{padding:16px}
 .cs-title{margin:0 0 6px}
 .cs-kicker{color:var(--brand);font-weight:800;margin:2px 0 10px}
 .cs-copy{color:var(--muted);margin:0}
-
-/* hidden placeholder cards (design-ready) */
 .cs-card.is-placeholder{opacity:.55}
 .cs-card.is-placeholder .cs-media{display:none}
 
-/* ---------------- Mobile (<= 960px) ---------------- */
+/* ---------- Wholesale Subscription Card ---------- */
+.wholesale{padding:56px 0;background:radial-gradient(1100px 380px at 15% -10%, rgba(52,211,153,.08), transparent)}
+.wh-card{
+  background:var(--card); border:1px solid #1a1f25; border-radius:16px;
+  padding:24px; display:grid; grid-template-columns:1.2fr 1fr; gap:20px; align-items:center;
+}
+.wh-copy h2{font-size:2rem;margin:0 0 10px}
+.wh-copy p{color:var(--muted);margin:0 0 12px}
+.wh-bullets{margin:8px 0 0;color:var(--muted);padding-left:1.1rem}
+.wh-bullets li{margin:6px 0}
+.wh-aside{background:#0f1320;border:1px solid #1a1f25;border-radius:14px;padding:18px}
+.wh-aside h3{margin:0 0 6px;font-size:1.05rem}
+.wh-aside .em{color:var(--brand);font-weight:800}
+.wh-cta{margin-top:12px}
+
+/* ---------- Recent Inventory Wins (Slider) ---------- */
+.inventory { padding: 56px 0; background: radial-gradient(1100px 380px at 85% -10%, rgba(52,211,153,.06), transparent); }
+.inventory .eyebrow {
+  display:inline-block;background:#0f1320;border:1px solid #1a1f25;color:var(--muted);
+  padding:6px 10px;border-radius:999px;margin-bottom:10px
+}
+.inventory h2 { margin:8px 0 16px; font-size:2rem; color: var(--text); }
+.inv-sub { color: var(--muted); margin: 0 0 18px; }
+
+.inv-rail {
+  position: relative; overflow: hidden;
+  border: 1px solid #1a1f25; border-radius: 16px; background: #0f1320;
+}
+
+.inv-track {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 85%;
+  gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory;
+  scroll-behavior: smooth; padding: 18px;
+}
+@media (min-width: 900px) { .inv-track { grid-auto-columns: 40%; } }
+
+.inv-slide {
+  scroll-snap-align: start;
+  background: #111418; border: 1px solid #1a1f25; border-radius: 14px;
+  overflow: hidden; display:flex; flex-direction: column;
+}
+.inv-media {
+  aspect-ratio: 16 / 10; background:#0b0d10; display:grid; place-items:center;
+}
+.inv-media img { width:100%; height:100%; object-fit:cover; display:block; }
+.inv-body { padding: 14px 14px 16px; }
+.inv-title { font-weight: 700; margin: 0 0 6px; color: var(--text); }
+.inv-meta { color: var(--muted); font-size: .95rem; margin: 0; }
+
+.inv-arrows {
+  position: absolute; inset: 0; pointer-events: none;
+  display:flex; align-items:center; justify-content:space-between; padding: 0 8px;
+}
+.inv-arrow {
+  pointer-events: auto; display:grid; place-items:center;
+  width:40px; height:40px; border-radius:999px;
+  background: rgba(15,19,32,.85); border: 1px solid #1a1f25;
+  color: var(--text); text-decoration:none; font-weight:800; backdrop-filter: blur(4px);
+}
+.inv-arrow:hover { outline: 2px solid var(--ring); }
+
+.inv-dots { display:flex; gap:8px; justify-content:center; margin-top:12px; }
+.inv-dots a {
+  width:10px; height:10px; border-radius:999px;
+  background:#2a313a; display:inline-block; border:1px solid #1a1f25;
+}
+.inv-dots a:focus-visible { outline:2px solid var(--brand); }
+
+/* ---------- Responsive (<= 960px) ---------- */
 @media (max-width: 960px){
   /* Layout stacks */
   .hero-inner{grid-template-columns:1fr}
@@ -186,17 +262,9 @@ summary{cursor:pointer;font-weight:600}
   .brand span{font-size:1.125rem}
   .menu-toggle{display:flex}
   .nav-links{
-    position:absolute;
-    top: calc(100% + 8px);
-    left: 20px; right: 20px;
-    background: var(--card);
-    border:1px solid #1a1f25;
-    border-radius:12px;
-    display:none;
-    flex-direction:column;
-    align-items:flex-start;
-    padding:12px;
-    z-index:60;
+    position:absolute; top: calc(100% + 8px); left: 20px; right: 20px;
+    background: var(--card); border:1px solid #1a1f25; border-radius:12px;
+    display:none; flex-direction:column; align-items:flex-start; padding:12px; z-index:60;
     box-shadow:0 10px 36px -18px rgba(0,0,0,.6);
   }
   .nav-links a{margin:8px 4px}
@@ -208,9 +276,11 @@ summary{cursor:pointer;font-weight:600}
   .about-media{order:-1}
   .about-media img{max-width:220px}
 
-  /* Case studies: single column on mobile;
-     keep images fully visible (no crop) */
+  /* Case studies: single column; never crop */
   .cs-grid{grid-template-columns:1fr}
   .cs-media{padding:14px}
   .cs-media img{max-height:none}
+
+  /* Inventory slider: show larger slides on mobile */
+  .inv-track { grid-auto-columns: 88%; }
 }
