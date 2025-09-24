@@ -73,6 +73,60 @@
     @media (max-width: 720px) {
       .apply .apply-form .form-grid { grid-template-columns: 1fr; }
     }
+
+    /* Scoped styles for Compare Plans table */
+    #get-started.compare .table-wrap {
+      background: #fff;
+      border: 1px solid rgba(15,23,42,0.08);
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(2,6,23,0.08);
+      overflow: hidden;
+    }
+    #get-started.compare table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    #get-started.compare th,
+    #get-started.compare td {
+      padding: 14px 12px;
+      text-align: center;
+      border-bottom: 1px solid rgba(15,23,42,0.06);
+    }
+    #get-started.compare th:first-child,
+    #get-started.compare td:first-child {
+      text-align: left;
+      font-weight: 600;
+      background: #f8fafc;
+      position: sticky;
+      left: 0;
+      z-index: 1;
+    }
+    #get-started.compare thead th {
+      background: linear-gradient(135deg, #f7f9ff, #eef2ff);
+      font-weight: 700;
+    }
+    #get-started.compare .price {
+      font-weight: 800;
+    }
+    #get-started.compare .yes { font-weight: 700; }
+    #get-started.compare .muted { color: #64748b; }
+    #get-started.compare .btn-col a {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(91,141,239,0.35);
+      text-decoration: none;
+    }
+    #get-started.compare .btn-col a.primary {
+      background: #5B8DEF;
+      color: #fff;
+      border-color: #5B8DEF;
+    }
+    #get-started.compare .scroll-x {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
   </style>
 </head>
 <body>
@@ -567,7 +621,7 @@
               <div class="stat-num">14 months</div>
               <div class="stat-label">to go full-time</div>
             </div>
-            <div class="stat">
+            <div class="stat>
               <div class="stat-num">3,000 sq ft</div>
               <div class="stat-label">warehouse</div>
             </div>
@@ -664,65 +718,77 @@
     </div>
   </section>
 
-  <!-- GET STARTED TODAY (all 5 options) -->
-  <section id="get-started" class="pricing">
+  <!-- GET STARTED TODAY — REPLACED WITH COMPARE PLANS -->
+  <section id="get-started" class="pricing compare">
     <div class="container">
-      <h2>Get started today!</h2>
-      <div class="cards">
-        <div class="price-card">
-          <div class="pc-head">Starter</div>
-          <div class="pc-price">$24.95 / month</div>
-          <ul class="pc-features">
-            <li>Course access</li>
-            <li>1× / week email coaching</li>
-            <li>25% off SellEvo.app tools</li>
-          </ul>
-          <a class="btn btn-full" href="#apply">Get Started Now</a>
-        </div>
-        <div class="price-card">
-          <div class="pc-head">Pro</div>
-          <div class="pc-price">$44.95 / month</div>
-          <ul class="pc-features">
-            <li>Course access</li>
-            <li>2× / week coaching</li>
-            <li>50% off SellEvo.app tools</li>
-          </ul>
-          <a class="btn btn-full" href="#apply">Get Started Now</a>
-        </div>
-        <div class="price-card pc-featured">
-          <div class="pc-head">Plus</div>
-          <div class="pc-price">$99.95 / month</div>
-          <ul class="pc-features">
-            <li>Course access</li>
-            <li>Priority phone &amp; text coaching</li>
-            <li>Free SellEvo.app access</li>
-          </ul>
-          <a class="btn btn-full" href="#apply">Get Started Now</a>
-        </div>
-        <div class="price-card">
-          <div class="pc-head">Elite</div>
-          <div class="pc-price">$149.95 / month</div>
-          <ul class="pc-features">
-            <li>Course access</li>
-            <li>3× / week priority coaching</li>
-            <li>Free SellEvo.app access</li>
-          </ul>
-          <a class="btn btn-full" href="#apply">Get Started Now</a>
-        </div>
-        <div class="price-card">
-          <div class="pc-head">Max</div>
-          <div class="pc-price">Starting at $500 / month</div>
-          <ul class="pc-features">
-            <li>Complete coaching + Zoom</li>
-            <li>Wholesale inventory monthly</li>
-            <li>Free SellEvo.app access</li>
-          </ul>
-          <a class="btn btn-full" href="#apply">Get Started Now</a>
-        </div>
+      <h2>Compare plans</h2>
+      <p class="inv-sub">Pick the level of support that matches your goals and budget.</p>
+
+      <div class="table-wrap scroll-x" role="region" aria-label="Compare coaching plans">
+        <table aria-describedby="plan-compare">
+          <thead>
+            <tr>
+              <th scope="col">What’s included</th>
+              <th scope="col">Starter<br><span class="price">$24.95/mo</span></th>
+              <th scope="col">Pro<br><span class="price">$44.95/mo</span></th>
+              <th scope="col">Plus<br><span class="price">$99.95/mo</span></th>
+              <th scope="col">Elite<br><span class="price">$149.95/mo</span></th>
+              <th scope="col">Max<br><span class="price">from $500/mo</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>6 Figure Reseller course</td>
+              <td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td>
+            </tr>
+            <tr>
+              <td>Coaching cadence</td>
+              <td>1×/week email</td>
+              <td>2×/week email</td>
+              <td>Priority phone &amp; text</td>
+              <td>3×/week priority</td>
+              <td>Complete + Zoom</td>
+            </tr>
+            <tr>
+              <td>SellEvo.app tools</td>
+              <td>25% off</td>
+              <td>50% off</td>
+              <td class="yes">Free access</td>
+              <td class="yes">Free access</td>
+              <td class="yes">Free access</td>
+            </tr>
+            <tr>
+              <td>Wholesale inventory monthly</td>
+              <td class="muted">—</td>
+              <td class="muted">—</td>
+              <td class="muted">—</td>
+              <td class="muted">—</td>
+              <td class="yes">Included</td>
+            </tr>
+            <tr>
+              <td>Best for</td>
+              <td>DIY learners</td>
+              <td>Momentum builders</td>
+              <td>Hands-on support</td>
+              <td>Fast-track results</td>
+              <td>Done-with-you scale</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="btn-col"><a href="#apply">Choose Starter</a></td>
+              <td class="btn-col"><a href="#apply">Choose Pro</a></td>
+              <td class="btn-col"><a class="primary" href="#apply">Choose Plus</a></td>
+              <td class="btn-col"><a href="#apply">Choose Elite</a></td>
+              <td class="btn-col"><a href="#apply">Talk about Max</a></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <p class="fineprint">Includes inventory management, profit calculation, and multi-platform fee calculators.</p>
+
+      <p id="plan-compare" class="fineprint">Includes inventory management, profit calculation, and multi-platform fee calculators.</p>
     </div>
   </section>
+  <!-- /GET STARTED TODAY — COMPARE PLANS -->
 
   <!-- FAQ -->
   <section id="faq" class="faq">
