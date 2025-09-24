@@ -265,7 +265,7 @@
 
       <div class="inv-rail">
         <div class="inv-track">
-          <!-- Slide 1 -->
+          <!-- slides... (unchanged) -->
           <article class="inv-slide" id="inv1">
             <div class="inv-media">
               <img src="assets/inventory/Inv-01.jpg" alt="Canon PowerShot SX170 camera">
@@ -275,8 +275,6 @@
               <p class="inv-meta">Sold $110 · 6 days</p>
             </div>
           </article>
-
-          <!-- Slide 2 -->
           <article class="inv-slide" id="inv2">
             <div class="inv-media">
               <img src="assets/inventory/Inv-02.jpg" alt="Vintage Abercrombie &amp; Fitch jacket">
@@ -286,8 +284,6 @@
               <p class="inv-meta">Sold $79.99 · 4 days</p>
             </div>
           </article>
-
-          <!-- Slide 3 -->
           <article class="inv-slide" id="inv3">
             <div class="inv-media">
               <img src="assets/inventory/Inv-03.jpg" alt="Vintage 90s Starter Kings snapback hat">
@@ -297,8 +293,6 @@
               <p class="inv-meta">Sold $70 · 3 days</p>
             </div>
           </article>
-
-          <!-- Slide 4 -->
           <article class="inv-slide" id="inv4">
             <div class="inv-media">
               <img src="assets/inventory/Inv-04.jpg" alt="Pokémon Game Boy Red Version">
@@ -308,8 +302,6 @@
               <p class="inv-meta">Sold $52 · 1 day</p>
             </div>
           </article>
-
-          <!-- Slide 5 -->
           <article class="inv-slide" id="inv5">
             <div class="inv-media">
               <img src="assets/inventory/Inv-05.jpg" alt="UGG Classic Short boots">
@@ -319,8 +311,6 @@
               <p class="inv-meta">Sold $80 · 11 days</p>
             </div>
           </article>
-
-          <!-- Slide 6 -->
           <article class="inv-slide" id="inv6">
             <div class="inv-media">
               <img src="assets/inventory/Inv-06.jpg" alt="Vintage Star Wars LEGO set">
@@ -330,8 +320,6 @@
               <p class="inv-meta">Sold $275 · 7 days</p>
             </div>
           </article>
-
-          <!-- Slide 7 -->
           <article class="inv-slide" id="inv7">
             <div class="inv-media">
               <img src="assets/inventory/Inv-07.jpg" alt="Vintage Sony Walkman">
@@ -341,8 +329,6 @@
               <p class="inv-meta">Sold $75 · 11 days</p>
             </div>
           </article>
-
-          <!-- Slide 8 -->
           <article class="inv-slide" id="inv8">
             <div class="inv-media">
               <img src="assets/inventory/Inv-08.jpg" alt="MSR Evo Trail snowshoes">
@@ -352,8 +338,6 @@
               <p class="inv-meta">Sold $79 · 3 days</p>
             </div>
           </article>
-
-          <!-- Slide 9 -->
           <article class="inv-slide" id="inv9">
             <div class="inv-media">
               <img src="assets/inventory/Inv-09.jpg" alt="Seiko Melodies wall clock">
@@ -363,8 +347,6 @@
               <p class="inv-meta">Sold $119 · 5 days</p>
             </div>
           </article>
-
-          <!-- Slide 10 -->
           <article class="inv-slide" id="inv10">
             <div class="inv-media">
               <img src="assets/inventory/Inv-10.jpg" alt="Vintage Eagles Gemmy inflatable player">
@@ -399,39 +381,72 @@
     </div>
   </section>
 
-  <!-- APPLY -->
+  <!-- APPLY (updated: coaching fit form) -->
   <section id="apply" class="apply">
     <div class="container">
-      <h2>Apply now</h2>
-      <p>Tell me about your business and goals. If it’s a fit, I’ll send next steps and scheduling.</p>
-      <form class="apply-form" name="coaching-apply" method="POST" data-netlify="true">
-        <input type="hidden" name="form-name" value="coaching-apply">
+      <h2>Find your best coaching fit</h2>
+      <p>Answer a few quick questions and I’ll recommend the plan that matches your stage, goals, and support needs.</p>
+
+      <form class="apply-form" name="coaching-fit" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="coaching-fit">
+        <!-- Send-to hint for your processor -->
+        <input type="hidden" name="to" value="coach@6figurereseller.com">
+
         <div class="form-grid">
-          <label><span>Full name</span><input required name="name" type="text" placeholder="Jane Doe"></label>
-          <label><span>Email</span><input required name="email" type="email" placeholder="you@example.com"></label>
-          <label>
+          <!-- Full name -->
+          <label><span>Full name</span>
+            <input required name="name" type="text" placeholder="Jane Doe">
+          </label>
+
+          <!-- Email -->
+          <label><span>Email</span>
+            <input required name="email" type="email" placeholder="you@example.com">
+          </label>
+
+          <!-- Currently reselling? -->
+          <label class="full"><span>Are you currently reselling?</span>
+            <select name="currently_reselling" id="currently_reselling" required>
+              <option value="">Select one</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </label>
+
+          <!-- Revenue (conditional) -->
+          <label id="rev_wrap" class="full" style="display:none;">
             <span>eBay monthly revenue</span>
-            <select name="revenue" required>
+            <select name="revenue" id="revenue_select">
               <option value="">Select one</option>
-              <option>&lt; $2k</option><option>$2k–$5k</option><option>$5k–$10k</option>
-              <option>$10k–$25k</option><option>$25k+</option>
+              <option>&lt; $2k</option>
+              <option>$2k–$5k</option>
+              <option>$5k–$10k</option>
+              <option>$10k–$25k</option>
+              <option>$25k+</option>
             </select>
           </label>
-          <label>
-            <span>Biggest bottleneck</span>
-            <select name="bottleneck" required>
-              <option value="">Select one</option>
-              <option>Sourcing</option><option>Listing velocity</option><option>Pricing / Offers</option>
-              <option>Time &amp; systems</option><option>Profit margins</option>
-            </select>
-          </label>
+
+          <!-- Bottleneck (multi up to 3) -->
           <label class="full">
-            <span>Your goal for the next 90 days</span>
+            <span>Biggest bottleneck <small style="color:var(--muted);font-weight:500;">(choose up to 3)</small></span>
+            <select name="bottleneck[]" id="bottleneck" multiple size="5">
+              <option>Sourcing</option>
+              <option>Listing velocity</option>
+              <option>Pricing / Offers</option>
+              <option>Time &amp; systems</option>
+              <option>Profit margins</option>
+            </select>
+          </label>
+
+          <!-- Goal -->
+          <label class="full">
+            <span>What is your reselling goal?</span>
             <textarea name="goal" rows="4" placeholder="Tell me what you want to accomplish..."></textarea>
           </label>
         </div>
-        <button class="btn btn-lg" type="submit">Submit Application</button>
+
+        <button class="btn btn-lg" type="submit">Get My Recommendation</button>
       </form>
+
       <p class="fineprint">Prefer a quick chat? Email <a href="mailto:coach@sellevo.app">coach@sellevo.app</a>.</p>
     </div>
   </section>
@@ -488,7 +503,6 @@
     <div class="container">
       <h2>Get started today!</h2>
       <div class="cards">
-        <!-- Starter -->
         <div class="price-card">
           <div class="pc-head">Starter</div>
           <div class="pc-price">$24.95 / month</div>
@@ -499,8 +513,6 @@
           </ul>
           <a class="btn btn-full" href="#apply">Get Started Now</a>
         </div>
-
-        <!-- Pro -->
         <div class="price-card">
           <div class="pc-head">Pro</div>
           <div class="pc-price">$44.95 / month</div>
@@ -511,8 +523,6 @@
           </ul>
           <a class="btn btn-full" href="#apply">Get Started Now</a>
         </div>
-
-        <!-- Plus -->
         <div class="price-card pc-featured">
           <div class="pc-head">Plus</div>
           <div class="pc-price">$99.95 / month</div>
@@ -523,8 +533,6 @@
           </ul>
           <a class="btn btn-full" href="#apply">Get Started Now</a>
         </div>
-
-        <!-- Elite -->
         <div class="price-card">
           <div class="pc-head">Elite</div>
           <div class="pc-price">$149.95 / month</div>
@@ -535,8 +543,6 @@
           </ul>
           <a class="btn btn-full" href="#apply">Get Started Now</a>
         </div>
-
-        <!-- Max -->
         <div class="price-card">
           <div class="pc-head">Max</div>
           <div class="pc-price">Starting at $500 / month</div>
@@ -576,7 +582,7 @@
     </div>
   </footer>
 
-  <!-- tiny helpers (hamburger + year) -->
+  <!-- tiny helpers (hamburger + year + form logic) -->
   <script>
     // current year
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -599,6 +605,37 @@
         });
       });
     }
+
+    // ----- Coaching fit form logic -----
+    (function(){
+      const reselling = document.getElementById('currently_reselling');
+      const revWrap = document.getElementById('rev_wrap');
+      const revSelect = document.getElementById('revenue_select');
+      const bottleneck = document.getElementById('bottleneck');
+
+      if (reselling) {
+        const toggleRevenue = () => {
+          const show = reselling.value === 'Yes';
+          revWrap.style.display = show ? '' : 'none';
+          revSelect.required = show;
+          if (!show) revSelect.value = '';
+        };
+        reselling.addEventListener('change', toggleRevenue);
+        toggleRevenue();
+      }
+
+      // Limit bottlenecks to 3 selections
+      if (bottleneck) {
+        bottleneck.addEventListener('change', () => {
+          const selected = Array.from(bottleneck.selectedOptions);
+          if (selected.length > 3) {
+            // Deselect the most recently selected option
+            selected[selected.length - 1].selected = false;
+            alert('Please choose up to 3 bottlenecks.');
+          }
+        });
+      }
+    })();
   </script>
 </body>
 </html>
