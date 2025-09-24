@@ -248,6 +248,61 @@ summary{cursor:pointer;font-weight:600}
 }
 .inv-dots a:focus-visible { outline:2px solid var(--brand); }
 
+/* ---------- Compare Plans (scoped) ---------- */
+#get-started.compare .table-wrap{
+  background: linear-gradient(180deg, #121722 0%, #0f1320 35%, #0b0d10 100%);
+  border: 1px solid #1a1f25;
+  border-radius: 16px;
+  box-shadow: 0 14px 36px rgba(0,0,0,.35);
+  overflow: hidden;
+}
+#get-started.compare table{
+  width:100%;
+  border-collapse:collapse;
+  color: var(--text);
+  font-size: .96rem;
+}
+#get-started.compare thead th{
+  position: sticky; top: 0;
+  background: linear-gradient(135deg, rgba(124,58,237,.35), rgba(52,211,153,.18));
+  color: #f2f5fb;
+  font-weight: 800;
+  padding: 16px 12px;
+  border-bottom: 1px solid #1a1f25;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+#get-started.compare th,
+#get-started.compare td{
+  padding: 14px 12px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  white-space: nowrap;
+}
+#get-started.compare th:first-child,
+#get-started.compare td:first-child{
+  text-align: left;
+  font-weight: 700;
+  background: #0f1320;
+  position: sticky; left: 0; z-index: 3;
+  white-space: normal; /* allow wrapping for feature text */
+}
+#get-started.compare tbody tr:nth-child(even) td{background:#0f1218}
+#get-started.compare tbody tr:nth-child(even) td:first-child{background:#0e1220}
+#get-started.compare .price{font-weight:900}
+#get-started.compare .yes{font-weight:800;color:var(--brand)}
+#get-started.compare .muted{color:#aab3c0}
+#get-started.compare .btn-col a{
+  display:inline-block;padding:10px 14px;border-radius:10px;
+  border:1px solid rgba(124,58,237,.5);text-decoration:none;color:#e9eef6;background:#101422
+}
+#get-started.compare .btn-col a.primary{
+  background:var(--brand-2);border-color:var(--brand-2);color:#fff
+}
+#get-started.compare .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+#get-started.compare .scroll-x::-webkit-scrollbar{height:10px}
+#get-started.compare .scroll-x::-webkit-scrollbar-thumb{background:#243041;border-radius:6px}
+
 /* ---------- Responsive (<= 960px) ---------- */
 @media (max-width: 960px){
   /* Layout stacks */
@@ -302,4 +357,31 @@ summary{cursor:pointer;font-weight:600}
 
   /* Inventory slider: show larger slides on mobile */
   .inv-track { grid-auto-columns: 88%; }
+
+  /* ===== Compare Plans — mobile fit ===== */
+  #get-started.compare table{
+    font-size: .9rem;
+    min-width: 760px;                   /* keep columns legible; enables horizontal scroll */
+  }
+  #get-started.compare th, 
+  #get-started.compare td{ 
+    padding: 10px 10px; 
+  }
+  #get-started.compare thead th{ 
+    font-size:.92rem; 
+    padding:12px 10px;
+  }
+  #get-started.compare .btn-col a{
+    padding:8px 10px;
+    font-size:.9rem;
+    white-space:nowrap;
+  }
+}
+
+/* Extra-small phones */
+@media (max-width: 420px){
+  #get-started.compare table{ min-width: 700px; }
+  #get-started.compare th:first-child,
+  #get-started.compare td:first-child{ max-width: 220px }
+  #get-started.compare .btn-col a{ padding:7px 9px; font-size:.88rem }
 }
