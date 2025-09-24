@@ -186,8 +186,8 @@ summary{cursor:pointer;font-weight:600}
   background:var(--card); border:1px solid #1a1f25; border-radius:16px;
   padding:24px; display:grid; grid-template-columns:1.2fr 1fr; gap:20px; align-items:center;
 }
-.wh-copy h2{font-size:2rem;margin:0 0 10px}
-.wh-copy p{color:var(--muted);margin:0 0 12px}
+.wh-copy h2{font-size:2rem;line-height:1.1;margin:0 0 10px}
+.wh-copy p{color:var(--muted);margin:0 0 12px; max-width:62ch}
 .wh-bullets{margin:8px 0 0;color:var(--muted);padding-left:1.1rem}
 .wh-bullets li{margin:6px 0}
 .wh-aside{background:#0f1320;border:1px solid #1a1f25;border-radius:14px;padding:18px}
@@ -258,7 +258,7 @@ summary{cursor:pointer;font-weight:600}
   .form-grid{grid-template-columns:1fr}
 
   /* Header tweaks */
-  .brand img{height:64px}
+  .brand img{height:88px}              /* bigger logo on mobile */
   .brand span{font-size:1.125rem}
   .menu-toggle{display:flex}
   .nav-links{
@@ -276,10 +276,29 @@ summary{cursor:pointer;font-weight:600}
   .about-media{order:-1}
   .about-media img{max-width:220px}
 
-  /* Case studies: single column; never crop */
+  /* Case studies */
   .cs-grid{grid-template-columns:1fr}
   .cs-media{padding:14px}
   .cs-media img{max-height:none}
+
+  /* ===== Wholesale (Reliable Inventory) mobile polish ===== */
+  .wh-card{
+    grid-template-columns:1fr;         /* single column */
+    gap:16px;
+    padding:18px;
+  }
+  .wh-copy h2{
+    font-size: clamp(1.5rem, 7vw, 1.9rem);  /* smaller headline to avoid heavy wrapping */
+    line-height:1.15;
+    margin-bottom:8px;
+  }
+  .wh-copy p{margin-bottom:10px}
+  .wh-bullets{margin-top:6px}
+  .wh-bullets li{margin:4px 0}
+  .wh-aside{
+    order:2;                            /* ensure aside appears after copy for flow */
+    padding:16px;
+  }
 
   /* Inventory slider: show larger slides on mobile */
   .inv-track { grid-auto-columns: 88%; }
