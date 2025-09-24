@@ -93,6 +93,35 @@
     }
     #get-started.compare .btn-col a.primary{background:#5B8DEF;color:#fff;border-color:#5B8DEF}
     #get-started.compare .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+    /* ===== Plan Impact Calculator (scoped) ===== */
+    .plan-calc{padding:56px 0}
+    .plan-calc .calc-card{
+      background:linear-gradient(180deg, rgba(52,211,153,.12), rgba(124,58,237,.10));
+      border:1px solid #20313a; border-radius:16px;
+      padding:18px; color:var(--text);
+      box-shadow:0 12px 32px rgba(0,0,0,.28);
+    }
+    .plan-calc h3{margin:0 0 10px}
+    .plan-calc p.helper{color:var(--muted); margin:0 0 14px}
+    .plan-calc .calc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .plan-calc label{display:flex;flex-direction:column;gap:6px;font-weight:600;color:var(--muted)}
+    .plan-calc input,.plan-calc select{
+      background:#0f1320;border:1px solid #1a1f25;border-radius:10px;color:var(--text);padding:10px
+    }
+    .plan-calc input:focus,.plan-calc select:focus{outline:none;box-shadow:0 0 0 4px var(--ring);border-color:rgba(52,211,153,.45)}
+    .plan-calc .calc-results{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}
+    .plan-calc .calc-results > div{background:#111418;border:1px solid #1a1f25;border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:6px}
+    .plan-calc .calc-results span{color:var(--muted);font-size:.9rem}
+    .plan-calc .calc-results strong{font-size:1.1rem}
+    @media (max-width:900px){
+      .plan-calc .calc-grid{grid-template-columns:1fr 1fr}
+      .plan-calc .calc-results{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:560px){
+      .plan-calc .calc-grid{grid-template-columns:1fr}
+      .plan-calc .calc-results{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
@@ -337,6 +366,39 @@
           <p><span class="em">3× minimum resale</span> based on historical comps and category mix. We prioritize velocity and profit—no filler.</p>
           <p>Perfect for sellers who want a consistent pipeline without spending all weekend sourcing.</p>
         </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN IMPACT CALCULATOR (added after Wholesale) -->
+  <section class="plan-calc" aria-label="Plan Impact Calculator">
+    <div class="container">
+      <div class="calc-card" id="plan-calc">
+        <h3>Will a plan pay for itself?</h3>
+        <p class="helper">Estimate extra listings per week you’ll produce with coaching and your average profit per item.</p>
+        <div class="calc-grid">
+          <label>Extra listings per week
+            <input type="number" step="1" id="extraPerWeek" value="15" min="0">
+          </label>
+          <label>Average profit per item
+            <input type="number" step="0.01" id="avgProfit" value="12">
+          </label>
+          <label>Choose plan
+            <select id="planPrice">
+              <option value="24.95">Starter — $24.95/mo</option>
+              <option value="44.95">Pro — $44.95/mo</option>
+              <option value="99.95" selected>Plus — $99.95/mo</option>
+              <option value="149.95">Elite — $149.95/mo</option>
+              <option value="500">Max — from $500/mo</option>
+            </select>
+          </label>
+        </div>
+        <div class="calc-results" aria-live="polite">
+          <div><span>Incremental monthly profit</span><strong id="incProfit">$0.00</strong></div>
+          <div><span>Plan cost</span><strong id="planCost">$0.00</strong></div>
+          <div><span>Net after plan</span><strong id="netProfit">$0.00</strong></div>
+          <div><span>Payback (days)</span><strong id="payback">0</strong></div>
+        </div>
       </div>
     </div>
   </section>
@@ -822,6 +884,30 @@
             alert('Please choose up to 3 bottlenecks.');
           }
         });
+      }
+    })();
+
+    // ----- Plan Impact Calculator logic -----
+    (function(){
+      const $ = id => document.getElementById(id);
+      ['extraPerWeek','avgProfit','planPrice'].forEach(id => $(id).addEventListener('input', calc));
+      calc();
+
+      function money(n){ return n.toLocaleString(undefined,{style:'currency',currency:'USD',maximumFractionDigits:2}); }
+      function calc(){
+        const perWeek = Math.max(0, parseFloat($('extraPerWeek').value)||0);
+        const avg = Math.max(0, parseFloat($('avgProfit').value)||0);
+        const price = Math.max(0, parseFloat($('planPrice').value)||0);
+
+        const incMonthly = perWeek * avg * 4;      // ~4 weeks/month
+        const net = incMonthly - price;
+        const perDay = (perWeek * avg) / 7;        // smooth to daily
+        const payback = perDay > 0 ? Math.max(0, Math.ceil(price / perDay)) : '—';
+
+        $('incProfit').textContent = money(incMonthly);
+        $('planCost').textContent = money(price);
+        $('netProfit').textContent = money(net);
+        $('payback').textContent = payback;
       }
     })();
   </script>
