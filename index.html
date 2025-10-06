@@ -350,14 +350,14 @@
     </div>
   </section>
 
-  <!-- PLAN IMPACT CALCULATOR (added after Wholesale) -->
+  <!-- PLAN IMPACT CALCULATOR (updated) -->
   <section class="plan-calc" aria-label="Plan Impact Calculator">
     <div class="container">
       <div class="calc-card" id="plan-calc">
         <h3>Will a plan pay for itself?</h3>
-        <p class="helper">Estimate extra sales per week you’ll produce with coaching and your average profit per item.</p>
+        <p class="helper">Estimate your average sales per week and your average profit per item.</p>
         <div class="calc-grid">
-          <label>Extra sales per week
+          <label>Average sales per week
             <input type="number" step="1" id="extraPerWeek" value="15" min="0">
           </label>
           <label>Average profit per item
@@ -365,11 +365,9 @@
           </label>
           <label>Choose plan
             <select id="planPrice">
-              <option value="24.95">Starter — $24.95/mo</option>
-              <option value="44.95">Pro — $44.95/mo</option>
+              <option value="44.95">Starter — $44.95/mo</option>
               <option value="99.95" selected>Plus — $99.95/mo</option>
-              <option value="149.95">Elite — $149.95/mo</option>
-              <option value="500">Max — from $500/mo</option>
+              <option value="199.95">Elite — $199.95/mo</option>
             </select>
           </label>
         </div>
@@ -855,13 +853,34 @@
       }
     })();
 
-    // ----- Plan Impact Calculator logic -----
+    // ----- Plan Impact Calculator logic (updated) -----
     (function(){
       const $ = id => document.getElementById(id);
       ['extraPerWeek','avgProfit','planPrice'].forEach(id => $(id).addEventListener('input', calc));
+      $('planPrice').addEventListener('change', applyPreset);
+
+      // Initialize presets based on default selection, then calc
+      applyPreset();
       calc();
 
       function money(n){ return n.toLocaleString(undefined,{style:'currency',currency:'USD',maximumFractionDigits:2}); }
+
+      function applyPreset(){
+        const price = parseFloat($('planPrice').value)||0;
+        // Set presets per selected plan
+        if(price === 44.95){
+          $('extraPerWeek').value = 20;
+          $('avgProfit').value = 25;
+        }else if(price === 99.95){
+          $('extraPerWeek').value = 40;
+          $('avgProfit').value = 25;
+        }else if(price === 199.95){
+          $('extraPerWeek').value = 100;
+          $('avgProfit').value = 25;
+        }
+        calc();
+      }
+
       function calc(){
         const perWeek = Math.max(0, parseFloat($('extraPerWeek').value)||0);
         const avg = Math.max(0, parseFloat($('avgProfit').value)||0);
