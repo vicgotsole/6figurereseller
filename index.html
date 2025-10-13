@@ -124,12 +124,12 @@
     }
 
     /* ===== Free PDF banner + note (scoped) ===== */
+    /* Slimmer, more professional decorative banner */
     .free-pdf-banner{
       position:relative;
-      /* Taller banner so background artwork isn’t cropped */
-      min-height:clamp(260px, 42vw, 620px);
-      padding:clamp(28px,6vw,64px) 0;
-      background:#0b0d10 url('assets/50.png') center top / cover no-repeat;
+      min-height:clamp(140px, 20vw, 260px);
+      padding:clamp(16px,3vw,24px) 0;
+      background:#0b0d10 url('assets/50.png') center/cover no-repeat;
       border-top:1px solid rgba(255,255,255,.08);
       border-bottom:1px solid rgba(255,255,255,.08);
       isolation:isolate;
@@ -137,40 +137,53 @@
     .free-pdf-banner::after{
       content:"";
       position:absolute; inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.35));
+      background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.25));
       z-index:0;
     }
-    .free-pdf-banner .inner{
-      position:relative; z-index:1;
-      display:grid; gap:16px;
-      place-items:center;
-      text-align:center;
-      color:#e9eef6;
-    }
-    /* Removed custom button styling so it inherits global .btn look */
+    .free-pdf-banner .inner{position:relative; z-index:1}
 
-    .free-pdf-note{padding:clamp(24px,4vw,44px) 0}
+    /* Translucent panel below banner */
+    .free-pdf-note{padding:clamp(28px,4vw,52px) 0}
+    .free-pdf-note .panel{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:16px;
+      backdrop-filter:blur(6px);
+      padding:clamp(18px,3vw,28px);
+    }
+    .free-pdf-note .panel h3.section-title{
+      margin:0 0 8px;
+      text-align:center;
+      font-weight:800;
+    }
     .free-pdf-note .intro{
       text-align:center;
       max-width:900px;
-      margin:0 auto 16px;
+      margin:0 auto 18px;
     }
-    .free-pdf-note .intro h3{margin:0 0 6px}
     .free-pdf-note .intro p{margin:0;color:var(--muted)}
+
+    /* Larger book image + tidy layout */
     .free-pdf-note .note-wrap{
-      display:grid; gap:22px; align-items:center;
-      grid-template-columns: 120px 1fr;
+      display:grid; gap:24px; align-items:center;
+      grid-template-columns: minmax(180px, 280px) 1fr;
     }
     .free-pdf-note .note-wrap img{
-      width:100%; height:auto; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,.25);
+      width:100%; height:auto;
+      border-radius:12px; box-shadow:0 8px 22px rgba(0,0,0,.28);
       background:#fff;
     }
     .free-pdf-note h3{margin:0 0 8px}
     .free-pdf-note p{margin:0;color:var(--muted)}
+    .free-pdf-note .actions{
+      margin-top:18px;
+      text-align:center;
+    }
+
     @media (max-width:700px){
       .free-pdf-note .note-wrap{grid-template-columns:1fr}
-      .free-pdf-note .note-wrap img{max-width:140px;justify-self:center}
-      .free-pdf-note .note-wrap .copy{text-align:center}
+      .free-pdf-note .note-wrap img{max-width:220px;justify-self:center}
+      .free-pdf-note .copy{text-align:center}
     }
   </style>
 </head>
@@ -559,26 +572,30 @@
   <!-- >>> NEW: FREE PDF BANNER + NOTE <<< -->
   <section class="free-pdf-banner" aria-label="Download Free PDF">
     <div class="container">
-      <div class="inner">
-        <!-- Banner now only shows the button; inherits global button style -->
-        <a class="btn btn-lg" href="https://6figurereseller.teachable.com/p/household-items-to-help-you-fund-your-reselling-business-925635" target="_blank" rel="noopener">Download Free PDF</a>
-      </div>
+      <div class="inner"></div>
     </div>
   </section>
 
   <section class="free-pdf-note" aria-label="Getting started with no capital">
     <div class="container">
-      <!-- Moved text from banner into an intro block below -->
-      <div class="intro">
-        <h3>Don’t let a lack of capital slow you down.</h3>
-        <p>Grab the free guide with <strong>50+ household items</strong> you can sell right now to jump-start your reselling bankroll.</p>
-      </div>
+      <div class="panel">
+        <h3 class="section-title">Will this plan work for you?</h3>
 
-      <div class="note-wrap">
-        <img src="assets/book.png" alt="50+ Household Items Free PDF">
-        <div class="copy">
-          <h3>No cash? No problem.</h3>
-          <p>If you don’t have capital to invest in reselling yet, start by flipping items you already own. This free PDF lists <strong>50+ household items</strong> you can sell today to fund your first inventory purchases and build momentum—fast.</p>
+        <div class="intro">
+          <h3>Don’t let a lack of capital slow you down.</h3>
+          <p>Grab the free guide with <strong>50+ household items</strong> you can sell right now to jump-start your reselling bankroll.</p>
+        </div>
+
+        <div class="note-wrap">
+          <img src="assets/book.png" alt="50+ Household Items Free PDF">
+          <div class="copy">
+            <h3>No cash? No problem.</h3>
+            <p>If you don’t have capital to invest in reselling yet, start by flipping items you already own. This free PDF lists <strong>50+ household items</strong> you can sell today to fund your first inventory purchases and build momentum—fast.</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-lg" href="https://6figurereseller.teachable.com/l/digital_download/925635/household-items-to-help-you-fund-your-reselling-business" target="_blank" rel="noopener">Download Free PDF</a>
         </div>
       </div>
     </div>
