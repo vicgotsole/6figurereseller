@@ -14,7 +14,6 @@
   <style>
     /* ===== Apply form card ===== */
     .apply .apply-form{
-      /* layered, higher-contrast gradient */
       background:
         radial-gradient(900px 600px at 0% -10%, rgba(91,141,239,.25) 0%, rgba(91,141,239,.12) 45%, rgba(91,141,239,0) 70%),
         linear-gradient(135deg, #ffffff 0%, #eef2ff 55%, #e2e8ff 100%);
@@ -81,7 +80,6 @@
       background:#eef2ff;
       position:sticky;left:0;z-index:1;
     }
-    /* zebra rows for readability */
     #get-started.compare tbody tr:nth-child(even) td:first-child{background:#e6ebff}
     #get-started.compare tbody tr:nth-child(even) td{background:#f8fbff}
     #get-started.compare .price{font-weight:900}
@@ -98,8 +96,10 @@
     .plan-calc{padding:56px 0}
     .plan-calc .calc-card{
       background:linear-gradient(180deg, rgba(52,211,153,.12), rgba(124,58,237,.10));
-      border:1px solid #20313a; border-radius:16px;
-      padding:18px; color:var(--text);
+      border:1px solid #20313a;
+      border-radius:16px;
+      padding:18px;
+      color:var(--text);
       box-shadow:0 12px 32px rgba(0,0,0,.28);
     }
     .plan-calc h3{margin:0 0 10px}
@@ -123,38 +123,16 @@
       .plan-calc .calc-results{grid-template-columns:1fr}
     }
 
-    /* ===== Free PDF banner + note (scoped) ===== */
-    /* Slimmer, more professional decorative banner */
-    .free-pdf-banner{
-      position:relative;
-      min-height:clamp(140px, 20vw, 260px);
-      padding:clamp(16px,3vw,24px) 0;
-      background:#0b0d10 url('assets/50.png') center/cover no-repeat;
-      border-top:1px solid rgba(255,255,255,.08);
-      border-bottom:1px solid rgba(255,255,255,.08);
-      isolation:isolate;
-    }
-    .free-pdf-banner::after{
-      content:"";
-      position:absolute; inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.25));
-      z-index:0;
-    }
-    .free-pdf-banner .inner{position:relative; z-index:1}
-
-    /* Translucent panel below banner */
+    /* ===== Free PDF note (no banner) ===== */
     .free-pdf-note{padding:clamp(28px,4vw,52px) 0}
+    /* Match calculator card styling */
     .free-pdf-note .panel{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg, rgba(52,211,153,.12), rgba(124,58,237,.10));
+      border:1px solid #20313a;
       border-radius:16px;
-      backdrop-filter:blur(6px);
       padding:clamp(18px,3vw,28px);
-    }
-    .free-pdf-note .panel h3.section-title{
-      margin:0 0 8px;
-      text-align:center;
-      font-weight:800;
+      color:var(--text);
+      box-shadow:0 12px 32px rgba(0,0,0,.28);
     }
     .free-pdf-note .intro{
       text-align:center;
@@ -175,10 +153,7 @@
     }
     .free-pdf-note h3{margin:0 0 8px}
     .free-pdf-note p{margin:0;color:var(--muted)}
-    .free-pdf-note .actions{
-      margin-top:18px;
-      text-align:center;
-    }
+    .free-pdf-note .actions{margin-top:18px;text-align:center}
 
     @media (max-width:700px){
       .free-pdf-note .note-wrap{grid-template-columns:1fr}
@@ -344,7 +319,6 @@
     <div class="container">
       <h2>Coaching options</h2>
       <div class="cards">
-        <!-- Starter -->
         <div class="price-card">
           <div class="pc-head">Starter</div>
           <div class="pc-price">$44.95 / month</div>
@@ -356,7 +330,6 @@
           <a class="btn btn-full" href="#apply">Choose Starter</a>
         </div>
 
-        <!-- Pro -->
         <div class="price-card pc-featured">
           <div class="pc-head">Pro</div>
           <div class="pc-price">$99.95 / month</div>
@@ -369,7 +342,6 @@
           <a class="btn btn-full" href="#apply">Choose Pro</a>
         </div>
 
-        <!-- Elite -->
         <div class="price-card">
           <div class="pc-head">Elite</div>
           <div class="pc-price">$199.95 / month</div>
@@ -546,14 +518,12 @@
           </article>
         </div>
 
-        <!-- Optional arrows (hash jump to first/last) -->
         <div class="inv-arrows" aria-hidden="true">
           <a class="inv-arrow" href="#inv1" title="First">«</a>
           <a class="inv-arrow" href="#inv10" title="Last">»</a>
         </div>
       </div>
 
-      <!-- Dots -->
       <div class="inv-dots" aria-label="Slide navigation">
         <a href="#inv1" aria-label="Slide 1"></a>
         <a href="#inv2" aria-label="Slide 2"></a>
@@ -569,18 +539,10 @@
     </div>
   </section>
 
-  <!-- >>> NEW: FREE PDF BANNER + NOTE <<< -->
-  <section class="free-pdf-banner" aria-label="Download Free PDF">
-    <div class="container">
-      <div class="inner"></div>
-    </div>
-  </section>
-
+  <!-- FREE PDF NOTE (banner removed) -->
   <section class="free-pdf-note" aria-label="Getting started with no capital">
     <div class="container">
       <div class="panel">
-        <h3 class="section-title">Will this plan work for you?</h3>
-
         <div class="intro">
           <h3>Don’t let a lack of capital slow you down.</h3>
           <p>Grab the free guide with <strong>50+ household items</strong> you can sell right now to jump-start your reselling bankroll.</p>
@@ -600,7 +562,7 @@
       </div>
     </div>
   </section>
-  <!-- <<< /NEW SECTION -->
+  <!-- /FREE PDF NOTE -->
 
   <!-- APPLY (updated: coaching fit form) -->
   <section id="apply" class="apply">
@@ -869,7 +831,6 @@
       <p id="plan-compare" class="fineprint">Includes inventory management, profit calculation, and multi-platform fee calculators.</p>
     </div>
   </section>
-  <!-- /GET STARTED TODAY — COMPARE PLANS -->
 
   <!-- FAQ -->
   <section id="faq" class="faq">
@@ -963,7 +924,6 @@
 
       function applyPreset(){
         const price = parseFloat($('planPrice').value)||0;
-        // Set presets per selected plan
         if(price === 44.95){
           $('extraPerWeek').value = 20;
           $('avgProfit').value = 25;
@@ -982,9 +942,9 @@
         const avg = Math.max(0, parseFloat($('avgProfit').value)||0);
         const price = Math.max(0, parseFloat($('planPrice').value)||0);
 
-        const incMonthly = perWeek * avg * 4;      // ~4 weeks/month
+        const incMonthly = perWeek * avg * 4;
         const net = incMonthly - price;
-        const perDay = (perWeek * avg) / 7;        // smooth to daily
+        const perDay = (perWeek * avg) / 7;
         const payback = perDay > 0 ? Math.max(0, Math.ceil(price / perDay)) : '—';
 
         $('incProfit').textContent = money(incMonthly);
