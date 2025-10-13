@@ -144,13 +144,7 @@
       text-align:center;
       color:#e9eef6;
     }
-    .free-pdf-banner h2{
-      margin:0; font-size:clamp(1.4rem,3.2vw,2.2rem);
-      font-weight:800; letter-spacing:.2px;
-    }
-    .free-pdf-banner p{
-      margin:0 auto; max-width:900px; color:#d8e1f0;
-    }
+    /* Only the button remains visible on the banner */
     .free-pdf-banner .btn{
       display:inline-block;
       margin:6px auto 0;
@@ -164,6 +158,13 @@
     }
 
     .free-pdf-note{padding:clamp(24px,4vw,44px) 0}
+    .free-pdf-note .intro{
+      text-align:center;
+      max-width:900px;
+      margin:0 auto 16px;
+    }
+    .free-pdf-note .intro h3{margin:0 0 6px}
+    .free-pdf-note .intro p{margin:0;color:var(--muted)}
     .free-pdf-note .note-wrap{
       display:grid; gap:22px; align-items:center;
       grid-template-columns: 120px 1fr;
@@ -567,8 +568,7 @@
   <section class="free-pdf-banner" aria-label="Download Free PDF">
     <div class="container">
       <div class="inner">
-        <h2>Don’t let a lack of capital slow you down.</h2>
-        <p>Grab the free guide with <strong>50+ household items</strong> you can sell right now to jump-start your reselling bankroll.</p>
+        <!-- Banner now only shows the button -->
         <a class="btn" href="https://6figurereseller.teachable.com/p/household-items-to-help-you-fund-your-reselling-business-925635" target="_blank" rel="noopener">Download Free PDF</a>
       </div>
     </div>
@@ -576,6 +576,12 @@
 
   <section class="free-pdf-note" aria-label="Getting started with no capital">
     <div class="container">
+      <!-- Moved text from banner into an intro block below -->
+      <div class="intro">
+        <h3>Don’t let a lack of capital slow you down.</h3>
+        <p>Grab the free guide with <strong>50+ household items</strong> you can sell right now to jump-start your reselling bankroll.</p>
+      </div>
+
       <div class="note-wrap">
         <img src="assets/book.png" alt="50+ Household Items Free PDF">
         <div class="copy">
@@ -802,7 +808,7 @@
       <h2>Compare plans</h2>
       <p class="inv-sub">Pick the level of support that matches your goals and budget.</p>
 
-      <div class="table-wrap scroll-x" role="region" aria-label="Compare coaching plans">
+    <div class="table-wrap scroll-x" role="region" aria-label="Compare coaching plans">
         <table aria-describedby="plan-compare">
           <thead>
             <tr>
