@@ -126,8 +126,10 @@
     /* ===== Free PDF banner + note (scoped) ===== */
     .free-pdf-banner{
       position:relative;
+      /* Taller banner so background artwork isn’t cropped */
+      min-height:clamp(260px, 42vw, 620px);
       padding:clamp(28px,6vw,64px) 0;
-      background:#0b0d10 url('assets/50.png') center/cover no-repeat;
+      background:#0b0d10 url('assets/50.png') center top / cover no-repeat;
       border-top:1px solid rgba(255,255,255,.08);
       border-bottom:1px solid rgba(255,255,255,.08);
       isolation:isolate;
@@ -141,21 +143,11 @@
     .free-pdf-banner .inner{
       position:relative; z-index:1;
       display:grid; gap:16px;
+      place-items:center;
       text-align:center;
       color:#e9eef6;
     }
-    /* Only the button remains visible on the banner */
-    .free-pdf-banner .btn{
-      display:inline-block;
-      margin:6px auto 0;
-      padding:12px 18px;
-      border-radius:12px;
-      text-decoration:none;
-      font-weight:800;
-      background:#5B8DEF; color:#fff;
-      border:1px solid #5B8DEF;
-      box-shadow:0 8px 24px rgba(91,141,239,.35);
-    }
+    /* Removed custom button styling so it inherits global .btn look */
 
     .free-pdf-note{padding:clamp(24px,4vw,44px) 0}
     .free-pdf-note .intro{
@@ -568,8 +560,8 @@
   <section class="free-pdf-banner" aria-label="Download Free PDF">
     <div class="container">
       <div class="inner">
-        <!-- Banner now only shows the button -->
-        <a class="btn" href="https://6figurereseller.teachable.com/p/household-items-to-help-you-fund-your-reselling-business-925635" target="_blank" rel="noopener">Download Free PDF</a>
+        <!-- Banner now only shows the button; inherits global button style -->
+        <a class="btn btn-lg" href="https://6figurereseller.teachable.com/p/household-items-to-help-you-fund-your-reselling-business-925635" target="_blank" rel="noopener">Download Free PDF</a>
       </div>
     </div>
   </section>
