@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Free Guide: 50+ Household Items You Can Sell — 6-Figure Reseller™</title>
+  <meta name="description" content="Grab the free PDF listing 50+ household items you can sell today to fund your reselling business.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --panel1:#111418;
+      --panel2:#0f1320;
+      --text:#e9eef6;
+      --muted:#a8b2c3;
+      --ring:rgba(91,141,239,.35);
+      --brand:#5B8DEF;
+      --success:#22c55e;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg); color:var(--text); line-height:1.6;
+    }
+    img{max-width:100%; height:auto; display:block}
+
+    /* Layout */
+    .container{width:min(1100px,92vw); margin:0 auto}
+    .site-header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(6px)}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0; border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .brand{display:flex; gap:10px; align-items:center; text-decoration:none; color:var(--text); font-weight:800}
+    .brand img{width:28px; height:28px}
+    .btn{
+      display:inline-block; border-radius:12px; padding:12px 18px; font-weight:700;
+      text-decoration:none; color:#fff; background:var(--brand); border:1px solid var(--brand);
+      transition:transform .03s ease, filter .2s ease, box-shadow .2s ease;
+      box-shadow:0 8px 22px rgba(91,141,239,.25);
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .btn:active{transform:translateY(1px)}
+    .btn-lg{padding:14px 22px; font-size:1.05rem; border-radius:14px}
+    .btn-outline{
+      background:transparent; color:var(--text); border-color:rgba(233,238,246,.35);
+      box-shadow:none;
+    }
+    .eyebrow{display:inline-block; padding:.25rem .6rem; border:1px solid rgba(255,255,255,.15); border-radius:999px; font-weight:700; font-size:.85rem; color:#cfe0ff}
+
+    /* Hero */
+    .hero{padding:48px 0 10px}
+    .hero-inner{display:grid; grid-template-columns: 1.1fr .9fr; gap:28px; align-items:center}
+    .hero h1{font-size:clamp(1.8rem, 2.2rem + 1vw, 3rem); line-height:1.15; margin:.5rem 0 1rem}
+    .hero p{color:var(--muted); margin:0 0 1.1rem}
+    .hero .cta{display:flex; gap:12px; flex-wrap:wrap}
+    .hero-card{
+      background:linear-gradient(180deg, rgba(52,211,153,.12), rgba(124,58,237,.10));
+      border:1px solid #20313a; border-radius:16px; padding:18px;
+      box-shadow:0 12px 32px rgba(0,0,0,.28);
+    }
+    .hero-card .note{font-weight:600; color:#d1ffe3}
+    .book-wrap{position:relative; aspect-ratio:4/5; border-radius:14px; overflow:hidden; background:#fff}
+    .book-wrap img{object-fit:cover; width:100%; height:100%}
+
+    /* Panel sections (match calculator translucency) */
+    .panel{
+      background:linear-gradient(180deg, rgba(52,211,153,.12), rgba(124,58,237,.10));
+      border:1px solid #20313a; border-radius:16px; padding:18px;
+      box-shadow:0 12px 32px rgba(0,0,0,.28);
+    }
+
+    /* Lead form */
+    .lead{padding:26px 0 10px}
+    .lead .form-card{display:grid; grid-template-columns:1fr; gap:14px}
+    .lead label{display:grid; gap:6px; font-weight:600; color:#cfe0ff}
+    .lead input{
+      background:#0f1320; color:var(--text); border:1px solid #1a1f25; border-radius:12px; padding:12px 14px;
+      font:inherit; transition:box-shadow .15s ease, border-color .15s ease
+    }
+    .lead input:focus{outline:none; box-shadow:0 0 0 4px var(--ring); border-color:rgba(52,211,153,.45)}
+    .agree{font-size:.9rem; color:var(--muted)}
+    .trust-row{display:flex; gap:14px; flex-wrap:wrap; align-items:center; color:#b6c3d6; font-size:.9rem}
+    .trust-row img{width:28px; opacity:.9}
+
+    /* What’s inside */
+    .inside{padding:34px 0}
+    .inside-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+    .inside .feature{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:14px}
+    .inside .feature h4{margin:.25rem 0 .35rem}
+    .inside .feature p{margin:0; color:var(--muted)}
+
+    /* Social proof */
+    .proof{padding:28px 0}
+    .quote{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:16px}
+    .quote strong{color:#d9e5ff}
+
+    /* FAQ */
+    .faq{padding:34px 0}
+    .faq details{
+      background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+      border-radius:12px; padding:12px 14px; margin:10px 0
+    }
+    .faq summary{cursor:pointer; font-weight:700}
+    .faq p{margin:.5rem 0 0; color:var(--muted)}
+
+    .site-footer{border-top:1px solid rgba(255,255,255,.08); margin-top:30px}
+    .footer-inner{display:flex; align-items:center; justify-content:space-between; padding:18px 0; color:#b6c3d6}
+    .footer-inner a{color:inherit; text-decoration:none}
+
+    @media (max-width:900px){
+      .hero-inner{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">
+        <img src="assets/logo.png" alt="6-Figure Reseller logo">
+        <span>Become a 6-Figure Reseller™</span>
+      </a>
+      <a class="btn btn-outline" href="/">← Back to homepage</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="eyebrow">Free PDF Download</span>
+        <h1>Don’t let a lack of capital slow you down.</h1>
+        <p>Get the guide with <strong>50+ household items</strong> you can sell today to fund your first inventory purchases and build momentum—fast.</p>
+        <div class="cta">
+          <a class="btn btn-lg" href="https://6figurereseller.teachable.com/l/digital_download/925635/household-items-to-help-you-fund-your-reselling-business">Download the PDF</a>
+          <a class="btn btn-outline btn-lg" href="#get-pdf">Or, get it via email</a>
+        </div>
+        <div class="trust-row" style="margin-top:10px">
+          <img src="assets/shield.svg" alt="" aria-hidden="true"><span>No spam. Unsubscribe anytime.</span>
+          <img src="assets/check.svg" alt="" aria-hidden="true"><span>Instant access.</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="book-wrap">
+          <img src="assets/book.png" alt="50+ Household Items you can sell — Free PDF">
+        </div>
+        <p class="note" style="margin:.9rem 0 0">Flip the items you already own to kick-start your bankroll.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Email capture -->
+  <section id="get-pdf" class="lead">
+    <div class="container">
+      <div class="panel">
+        <h2 style="margin:.25rem 0 10px">Send it to my inbox</h2>
+        <p class="agree">Enter your best email. We’ll send the PDF and a couple of quick-start tips—no fluff.</p>
+
+        <!-- Netlify form -->
+        <form class="form-card" name="free-pdf-optin" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="free-pdf-optin">
+          <p style="display:none">
+            <label>Don’t fill this out: <input name="bot-field"></label>
+          </p>
+
+          <label>First name
+            <input type="text" name="first_name" placeholder="Jane" required>
+          </label>
+
+          <label>Email
+            <input type="email" name="email" placeholder="you@example.com" required>
+          </label>
+
+          <button class="btn btn-lg" type="submit">Email me the PDF</button>
+
+          <p class="agree">Prefer no email? <a class="btn btn-outline" style="margin-left:8px" href="https://6figurereseller.teachable.com/l/digital_download/925635/household-items-to-help-you-fund-your-reselling-business">Skip the form &rarr; Download</a></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- What’s inside -->
+  <section class="inside">
+    <div class="container">
+      <h2 style="margin:0 0 12px">What’s inside the guide</h2>
+      <div class="inside-grid">
+        <div class="feature">
+          <h4>50+ household items</h4>
+          <p>Specific categories with examples you can list today—from small electronics to shoes &amp; kitchen gear.</p>
+        </div>
+        <div class="feature">
+          <h4>Quick pricing checks</h4>
+          <p>How to run comps fast so you don’t miss profit—and when to bundle items for velocity.</p>
+        </div>
+        <div class="feature">
+          <h4>Listing templates</h4>
+          <p>Titles and photo tips that speed up listing and improve sell-through.</p>
+        </div>
+        <div class="feature">
+          <h4>Next steps plan</h4>
+          <p>A simple, 7-day momentum checklist to turn that cash into inventory.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social proof -->
+  <section class="proof">
+    <div class="container">
+      <div class="quote">
+        <p><strong>“I funded my first wholesale lot using stuff from around the house.”</strong> The checklist made it brain-dead simple. Listed 15 items the first night and had 3 sales by morning.</p>
+        <p style="margin:0; color:#cfe0ff">— Jaxson W., Texas</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="lead" aria-label="Get your free PDF">
+    <div class="container">
+      <div class="panel" style="text-align:center">
+        <h2 style="margin:.25rem 0 8px">Ready to start flipping?</h2>
+        <p class="agree" style="margin:0 0 14px">Grab the guide now and use the cash to jump-start your reselling business.</p>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap">
+          <a class="btn btn-lg" href="https://6figurereseller.teachable.com/l/digital_download/925635/household-items-to-help-you-fund-your-reselling-business">Download the PDF</a>
+          <a class="btn btn-outline btn-lg" href="#get-pdf">Or, email it to me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <h2 style="margin:0 0 8px">FAQ</h2>
+      <details>
+        <summary>Is this really free?</summary>
+        <p>Yes. It’s a genuine value-packed PDF—no paywall. You can download directly or get it by email.</p>
+      </details>
+      <details>
+        <summary>Why are you giving it away?</summary>
+        <p>Helping you make quick wins builds trust. If you like the systems, you’ll know where to find coaching.</p>
+      </details>
+      <details>
+        <summary>Will you spam me?</summary>
+        <p>No. You’ll get the PDF and a few short tips. You can unsubscribe in one click at any time.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> SellEvo — Become a 6-Figure Reseller™</div>
+      <a href="/">Back to homepage</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Optional: after Netlify form submit, send users to the PDF page
+    // (keeps your lead but gives instant access)
+    const form = document.querySelector('form[name="free-pdf-optin"]');
+    if(form){
+      form.addEventListener('submit', function(){
+        // Let Netlify capture submission and also navigate user to the PDF
+        setTimeout(()=> {
+          window.location.href = "https://6figurereseller.teachable.com/l/digital_download/925635/household-items-to-help-you-fund-your-reselling-business";
+        }, 150);
+      });
+    }
+  </script>
+</body>
+</html>
