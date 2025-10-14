@@ -26,7 +26,7 @@
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'XXXXXXXXXXXXXXX'); /* <-- replace with your Pixel ID */
+    fbq('init', 'XXXXXXXXXXXXXXX');
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
@@ -39,11 +39,11 @@
       ttq.setAndDefer = function(t, e){ t[e] = function(){ t.push([e].concat(Array.prototype.slice.call(arguments,0))) } };
       for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
       ttq.instance = function(t){ var e = ttq._i[t] || []; for (var n=0; n<ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]); return e };
-      ttq.load = function(e, n){ var i = "https://analytics.tiktok.com/i18n/pixel/events.js";
+      ttq.load = function(e){ var i = "https://analytics.tiktok.com/i18n/pixel/events.js";
         ttq._i = ttq._i || {}; ttq._i[e] = []; ttq._i[e]._u = i; ttq._t = ttq._t || {}; ttq._t[e] = +new Date;
         var o = d.createElement("script"); o.type = "text/javascript"; o.async = !0; o.src = i + "?sdkid=" + e + "&lib=" + t;
         var a = d.getElementsByTagName("script")[0]; a.parentNode.insertBefore(o, a) };
-      ttq.load('TT-XXXXXXXXXX'); /* <-- replace with your TikTok Pixel ID */
+      ttq.load('TT-XXXXXXXXXX');
       ttq.page();
     }(window, document, 'ttq');
   </script>
@@ -77,7 +77,32 @@
     }
     .brand{display:flex; gap:12px; align-items:center; text-decoration:none; color:var(--text); font-weight:800}
     /* Bigger logo to match homepage */
-    .brand img{width:44px; height:44px}
+    .brand img{width:64px; height:64px}
+    .brand span{font-size:1.05rem}
+    /* Navigation links + hamburger */
+    .menu-toggle{
+      display:none; width:40px; height:32px; border:1px solid rgba(255,255,255,.18); border-radius:10px;
+      background:transparent; position:relative; cursor:pointer;
+    }
+    .menu-toggle .bar{position:absolute; left:8px; right:8px; height:2px; background:#e9eef6; border-radius:2px}
+    .menu-toggle .bar:nth-child(1){top:9px}
+    .menu-toggle .bar:nth-child(2){top:15px}
+    .menu-toggle .bar:nth-child(3){top:21px}
+
+    .nav-links{display:flex; gap:18px; align-items:center}
+    .nav-links a{color:#e9eef6; text-decoration:none; font-weight:700; opacity:.92}
+    .nav-links a:hover{opacity:1}
+
+    @media (max-width:900px){
+      .menu-toggle{display:block}
+      .nav-links{
+        position:fixed; inset:64px 0 auto 0; background:rgba(17,20,24,.96);
+        border-top:1px solid rgba(255,255,255,.06);
+        display:none; flex-direction:column; padding:14px; gap:12px;
+      }
+      .nav-links.open{display:flex}
+    }
+
     .btn{
       display:inline-block; border-radius:12px; padding:12px 18px; font-weight:700;
       text-decoration:none; color:#fff; background:var(--brand); border:1px solid var(--brand);
@@ -126,7 +151,8 @@
     .lead input:focus{outline:none; box-shadow:0 0 0 4px var(--ring); border-color:rgba(52,211,153,.45)}
     .agree{font-size:.9rem; color:var(--muted)}
     .trust-row{display:flex; gap:14px; flex-wrap:wrap; align-items:center; color:#b6c3d6; font-size:.9rem}
-    .trust-row img{width:28px; opacity:.9}
+    /* remove tiny icons that showed as ? on some mobile browsers */
+    .trust-row span{padding-left:0}
 
     /* What’s inside */
     .inside{padding:34px 0}
@@ -151,14 +177,24 @@
       .about-card img{max-width:300px; justify-self:center}
     }
 
-    /* FAQ */
+    /* FAQ + Contact */
     .faq{padding:34px 0}
     .faq details{
       background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
       border-radius:12px; padding:12px 14px; margin:10px 0
     }
     .faq summary{cursor:pointer; font-weight:700}
-    .faq p{margin:.5rem 0 0; color:#var(--muted)}
+    .faq p{margin:.5rem 0 0; color:var(--muted)}
+
+    .contact{padding:20px 0 34px}
+    .contact form{display:grid; gap:12px}
+    .contact label{display:grid; gap:6px; font-weight:600; color:#cfe0ff}
+    .contact input,.contact textarea{
+      background:#0f1320; color:var(--text); border:1px solid #1a1f25; border-radius:12px; padding:12px 14px;
+      font:inherit;
+    }
+    .contact textarea{min-height:120px; resize:vertical}
+    .contact input:focus,.contact textarea:focus{outline:none; box-shadow:0 0 0 4px var(--ring); border-color:rgba(52,211,153,.45)}
 
     .site-footer{border-top:1px solid rgba(255,255,255,.08); margin-top:30px}
     .footer-inner{display:flex; align-items:center; justify-content:space-between; padding:18px 0; color:#b6c3d6}
@@ -177,7 +213,17 @@
         <img src="assets/logo.png" alt="6-Figure Reseller logo">
         <span>Become a 6-Figure Reseller™</span>
       </a>
-      <a class="btn btn-outline" href="/">← Back to homepage</a>
+
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+
+      <nav id="primary-nav" class="nav-links">
+        <a href="/">Home</a>
+        <a href="https://6figurereseller.teachable.com/l/products?sortKey=name&sortDirection=asc&page=1">Courses</a>
+        <a href="#get-pdf">Get PDF</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
@@ -193,8 +239,8 @@
           <a class="btn btn-outline btn-lg track-emailcta" href="#get-pdf">Or, get it via email</a>
         </div>
         <div class="trust-row" style="margin-top:10px">
-          <img src="assets/shield.svg" alt="" aria-hidden="true"><span>No spam. Unsubscribe anytime.</span>
-          <img src="assets/check.svg" alt="" aria-hidden="true"><span>Instant access.</span>
+          <span>No spam. Unsubscribe anytime.</span>
+          <span>Instant access.</span>
         </div>
       </div>
 
@@ -318,6 +364,35 @@
     </div>
   </section>
 
+  <!-- Contact (Netlify) -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="panel">
+        <h2 style="margin:.25rem 0 10px">Contact</h2>
+        <p class="agree">Questions about the guide or coaching? Send a message below.</p>
+        <form name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact">
+          <input type="hidden" name="to" value="coach@6figurereseller.com">
+          <p style="display:none"><label>Don’t fill this out: <input name="bot-field"></label></p>
+
+          <label>Your name
+            <input type="text" name="name" placeholder="Jane Doe" required>
+          </label>
+
+          <label>Email
+            <input type="email" name="email" placeholder="you@example.com" required>
+          </label>
+
+          <label>Message
+            <textarea name="message" placeholder="How can I help?" required></textarea>
+          </label>
+
+          <button class="btn btn-lg" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
@@ -329,11 +404,27 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Mobile hamburger
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    if(toggle && nav){
+      toggle.addEventListener('click', ()=>{
+        const open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        nav.classList.toggle('open', !open);
+      });
+      nav.querySelectorAll('a').forEach(a=>{
+        a.addEventListener('click', ()=>{
+          toggle.setAttribute('aria-expanded','false');
+          nav.classList.remove('open');
+        });
+      });
+    }
+
     // After Netlify form submit, also navigate user to the PDF (keeps your lead and gives instant access)
     const form = document.querySelector('form[name="free-pdf-optin"]');
     if(form){
       form.addEventListener('submit', function(){
-        // Pixel events: form submit
         try{
           gtag && gtag('event','lead_submit',{form:'free-pdf-optin'});
           fbq && fbq('track','Lead');
