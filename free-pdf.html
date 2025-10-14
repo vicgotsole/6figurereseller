@@ -9,6 +9,46 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- ===== Tracking Pixels ===== -->
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Meta (Facebook) Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'XXXXXXXXXXXXXXX'); /* <-- replace with your Pixel ID */
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
+
+  <!-- TikTok Pixel -->
+  <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject = t; var ttq = w[t] = w[t] || [];
+      ttq.methods = ["page","track","identify","instances","debug","on","off","once","ready","setUserProperties","setVisitorProperties","subscribe","unsubscribe"];
+      ttq.setAndDefer = function(t, e){ t[e] = function(){ t.push([e].concat(Array.prototype.slice.call(arguments,0))) } };
+      for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
+      ttq.instance = function(t){ var e = ttq._i[t] || []; for (var n=0; n<ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]); return e };
+      ttq.load = function(e, n){ var i = "https://analytics.tiktok.com/i18n/pixel/events.js";
+        ttq._i = ttq._i || {}; ttq._i[e] = []; ttq._i[e]._u = i; ttq._t = ttq._t || {}; ttq._t[e] = +new Date;
+        var o = d.createElement("script"); o.type = "text/javascript"; o.async = !0; o.src = i + "?sdkid=" + e + "&lib=" + t;
+        var a = d.getElementsByTagName("script")[0]; a.parentNode.insertBefore(o, a) };
+      ttq.load('TT-XXXXXXXXXX'); /* <-- replace with your TikTok Pixel ID */
+      ttq.page();
+    }(window, document, 'ttq');
+  </script>
+  <!-- /Tracking Pixels -->
+
   <style>
     :root{
       --bg:#0b0d10;
@@ -35,8 +75,9 @@
       display:flex; align-items:center; justify-content:space-between;
       padding:14px 0; border-bottom:1px solid rgba(255,255,255,.06);
     }
-    .brand{display:flex; gap:10px; align-items:center; text-decoration:none; color:var(--text); font-weight:800}
-    .brand img{width:28px; height:28px}
+    .brand{display:flex; gap:12px; align-items:center; text-decoration:none; color:var(--text); font-weight:800}
+    /* Bigger logo to match homepage */
+    .brand img{width:44px; height:44px}
     .btn{
       display:inline-block; border-radius:12px; padding:12px 18px; font-weight:700;
       text-decoration:none; color:#fff; background:var(--brand); border:1px solid var(--brand);
@@ -99,6 +140,17 @@
     .quote{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:16px}
     .quote strong{color:#d9e5ff}
 
+    /* About Me */
+    .about-me{padding:26px 0}
+    .about-card{display:grid; grid-template-columns: minmax(220px, 340px) 1fr; gap:22px; align-items:center}
+    .about-card img{border-radius:14px; box-shadow:0 8px 22px rgba(0,0,0,.28)}
+    .about-card h3{margin:.25rem 0 .5rem}
+    .about-card p{margin:0; color:var(--muted)}
+    @media (max-width:800px){
+      .about-card{grid-template-columns:1fr; text-align:center}
+      .about-card img{max-width:300px; justify-self:center}
+    }
+
     /* FAQ */
     .faq{padding:34px 0}
     .faq details{
@@ -106,7 +158,7 @@
       border-radius:12px; padding:12px 14px; margin:10px 0
     }
     .faq summary{cursor:pointer; font-weight:700}
-    .faq p{margin:.5rem 0 0; color:var(--muted)}
+    .faq p{margin:.5rem 0 0; color:#var(--muted)}
 
     .site-footer{border-top:1px solid rgba(255,255,255,.08); margin-top:30px}
     .footer-inner{display:flex; align-items:center; justify-content:space-between; padding:18px 0; color:#b6c3d6}
@@ -137,8 +189,8 @@
         <h1>Don’t let a lack of capital slow you down.</h1>
         <p>Get the guide with <strong>50+ household items</strong> you can sell today to fund your first inventory purchases and build momentum—fast.</p>
         <div class="cta">
-          <a class="btn btn-lg" href="https://6figurereseller.teachable.com/l/digital_download/925635/household-items-to-help-you-fund-your-reselling-business">Download the PDF</a>
-          <a class="btn btn-outline btn-lg" href="#get-pdf">Or, get it via email</a>
+          <a class="btn btn-lg track-download" href="https://6figurereseller.teachable.com/l/digital_download/925635/household-items-to-help-you-fund-your-reselling-business">Download the PDF</a>
+          <a class="btn btn-outline btn-lg track-emailcta" href="#get-pdf">Or, get it via email</a>
         </div>
         <div class="trust-row" style="margin-top:10px">
           <img src="assets/shield.svg" alt="" aria-hidden="true"><span>No spam. Unsubscribe anytime.</span>
@@ -151,6 +203,19 @@
           <img src="assets/book.png" alt="50+ Household Items you can sell — Free PDF">
         </div>
         <p class="note" style="margin:.9rem 0 0">Flip the items you already own to kick-start your bankroll.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me (under hero) -->
+  <section class="about-me">
+    <div class="container">
+      <div class="panel about-card">
+        <img src="assets/aboutme.png" alt="Coach Victor — Founder of 6 Figure Reseller">
+        <div>
+          <h3>About Coach Victor</h3>
+          <p>Hi, I’m <strong>Coach Victor</strong>, founder of <strong>6 Figure Reseller</strong>. I’ve been reselling on eBay for over <strong>12 years</strong>—the last <strong>six</strong> full-time—generating more than <strong>$5,000,000 in sales</strong>. I started small in my garage, built repeatable systems, and eventually purchased a <strong>5,000 sq ft warehouse</strong> to scale operations. My goal with this guide is simple: help you create quick wins and build the momentum to grow a stable, profitable reselling business.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -177,9 +242,9 @@
             <input type="email" name="email" placeholder="you@example.com" required>
           </label>
 
-          <button class="btn btn-lg" type="submit">Email me the PDF</button>
+          <button class="btn btn-lg track-submit" type="submit">Email me the PDF</button>
 
-          <p class="agree">Prefer no email? <a class="btn btn-outline" style="margin-left:8px" href="https://6figurereseller.teachable.com/l/digital_download/925635/household-items-to-help-you-fund-your-reselling-business">Skip the form &rarr; Download</a></p>
+          <p class="agree">Prefer no email? <a class="btn btn-outline track-skip" style="margin-left:8px" href="https://6figurereseller.teachable.com/l/digital_download/925635/household-items-to-help-you-fund-your-reselling-business">Skip the form &rarr; Download</a></p>
         </form>
       </div>
     </div>
@@ -227,8 +292,8 @@
         <h2 style="margin:.25rem 0 8px">Ready to start flipping?</h2>
         <p class="agree" style="margin:0 0 14px">Grab the guide now and use the cash to jump-start your reselling business.</p>
         <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap">
-          <a class="btn btn-lg" href="https://6figurereseller.teachable.com/l/digital_download/925635/household-items-to-help-you-fund-your-reselling-business">Download the PDF</a>
-          <a class="btn btn-outline btn-lg" href="#get-pdf">Or, email it to me</a>
+          <a class="btn btn-lg track-download" href="https://6figurereseller.teachable.com/l/digital_download/925635/household-items-to-help-you-fund-your-reselling-business">Download the PDF</a>
+          <a class="btn btn-outline btn-lg track-emailcta" href="#get-pdf">Or, email it to me</a>
         </div>
       </div>
     </div>
@@ -264,17 +329,39 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Optional: after Netlify form submit, send users to the PDF page
-    // (keeps your lead but gives instant access)
+    // After Netlify form submit, also navigate user to the PDF (keeps your lead and gives instant access)
     const form = document.querySelector('form[name="free-pdf-optin"]');
     if(form){
       form.addEventListener('submit', function(){
-        // Let Netlify capture submission and also navigate user to the PDF
+        // Pixel events: form submit
+        try{
+          gtag && gtag('event','lead_submit',{form:'free-pdf-optin'});
+          fbq && fbq('track','Lead');
+          ttq && ttq.track('SubmitForm');
+        }catch(e){}
         setTimeout(()=> {
           window.location.href = "https://6figurereseller.teachable.com/l/digital_download/925635/household-items-to-help-you-fund-your-reselling-business";
         }, 150);
       });
     }
+
+    // Track CTA clicks
+    function track(action,label){
+      try{
+        gtag && gtag('event', action, {label});
+        fbq && fbq('trackCustom', action, {label});
+        ttq && ttq.track(action, {content_name: label});
+      }catch(e){}
+    }
+    document.querySelectorAll('.track-download').forEach(a=>{
+      a.addEventListener('click',()=>track('DownloadPDF','teachable_direct'));
+    });
+    document.querySelectorAll('.track-emailcta').forEach(a=>{
+      a.addEventListener('click',()=>track('EmailCTA','scroll_to_form'));
+    });
+    document.querySelectorAll('.track-skip').forEach(a=>{
+      a.addEventListener('click',()=>track('SkipForm','teachable_direct'));
+    });
   </script>
 </body>
 </html>
