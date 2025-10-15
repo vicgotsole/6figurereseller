@@ -125,7 +125,6 @@
 
     /* ===== Free PDF note (no banner) ===== */
     .free-pdf-note{padding:clamp(28px,4vw,52px) 0}
-    /* Match calculator card styling */
     .free-pdf-note .panel{
       background:linear-gradient(180deg, rgba(52,211,153,.12), rgba(124,58,237,.10));
       border:1px solid #20313a;
@@ -140,8 +139,6 @@
       margin:0 auto 18px;
     }
     .free-pdf-note .intro p{margin:0;color:var(--muted)}
-
-    /* Larger book image + tidy layout */
     .free-pdf-note .note-wrap{
       display:grid; gap:24px; align-items:center;
       grid-template-columns: minmax(180px, 280px) 1fr;
@@ -154,7 +151,6 @@
     .free-pdf-note h3{margin:0 0 8px}
     .free-pdf-note p{margin:0;color:var(--muted)}
     .free-pdf-note .actions{margin-top:18px;text-align:center}
-
     @media (max-width:700px){
       .free-pdf-note .note-wrap{grid-template-columns:1fr}
       .free-pdf-note .note-wrap img{max-width:220px;justify-self:center}
@@ -314,51 +310,52 @@
     </div>
   </section>
 
-  <!-- PRICING (updated to 3 options) -->
+  <!-- PRICING (updated cards per request) -->
   <section id="pricing" class="pricing">
     <div class="container">
       <h2>Coaching options</h2>
       <div class="cards">
+        <!-- Course -->
         <div class="price-card">
-          <div class="pc-head">Starter</div>
+          <div class="pc-head">Course</div>
           <div class="pc-price">$44.95 / month</div>
           <ul class="pc-features">
             <li>Access to 6 Figure Reseller course</li>
             <li>50% off SellEvo.app tools</li>
             <li>Optional add-on wholesale inventory ($250+/mo)</li>
           </ul>
-          <a class="btn btn-full" href="#apply">Choose Starter</a>
+          <a class="btn btn-full" href="https://6figurereseller.teachable.com/l/pdp/become-a-6-figure-reseller" target="_blank" rel="noopener">Course</a>
         </div>
 
+        <!-- 1-on-1 Zoom Coaching -->
         <div class="price-card pc-featured">
-          <div class="pc-head">Pro</div>
-          <div class="pc-price">$99.95 / month</div>
+          <div class="pc-head">1-on-1 Zoom Coaching</div>
+          <div class="pc-price">$69.99 / session</div>
           <ul class="pc-features">
-            <li>Access to 6 Figure Reseller course</li>
-            <li>Private coaching via text — 1×/month (45 min)</li>
-            <li>50% off SellEvo.app tools</li>
-            <li>Optional add-on wholesale inventory ($250+/mo)</li>
+            <li>30 minutes 1-on-1 coaching</li>
+            <li>Private Zoom call targeted to help with student’s specific questions</li>
           </ul>
-          <a class="btn btn-full" href="#apply">Choose Pro</a>
+          <a class="btn btn-full" href="https://6figurereseller.teachable.com/l/coaching/985183/30-minute-1-on-1-coaching" target="_blank" rel="noopener">1-on-1 coaching</a>
         </div>
 
+        <!-- Pro Bundle -->
         <div class="price-card">
-          <div class="pc-head">Elite</div>
+          <div class="pc-head">Pro Bundle</div>
           <div class="pc-price">$199.95 / month</div>
           <ul class="pc-features">
             <li>Access to 6 Figure Reseller course</li>
-            <li>Private coaching via text — 2×/month (90 min)</li>
+            <li>Private coaching via <strong>Zoom call</strong> — 2×/month (<strong>60 min</strong>)</li>
             <li>Free SellEvo.app tools</li>
             <li>Optional add-on wholesale inventory ($250+/mo)</li>
           </ul>
-          <a class="btn btn-full" href="#apply">Choose Elite</a>
+          <a class="btn btn-full" href="https://6figurereseller.teachable.com/l/bundle/699833/pro-plan" target="_blank" rel="noopener">Pro bundle</a>
         </div>
       </div>
       <p class="fineprint">Tools include inventory management, profit calculation, and fee calculators.</p>
     </div>
   </section>
 
-  <!-- WHOLESALE SUBSCRIPTION (updated content only) -->
+  <!-- WHOLESALE SUBSCRIPTION (unchanged) -->
   <section id="wholesale" class="wholesale">
     <div class="container">
       <div class="wh-card">
@@ -385,7 +382,7 @@
     </div>
   </section>
 
-  <!-- PLAN IMPACT CALCULATOR (updated) -->
+  <!-- PLAN IMPACT CALCULATOR (updated to Course + Pro Bundle only) -->
   <section class="plan-calc" aria-label="Plan Impact Calculator">
     <div class="container">
       <div class="calc-card" id="plan-calc">
@@ -393,16 +390,15 @@
         <p class="helper">Estimate your average sales per week and your average profit per item.</p>
         <div class="calc-grid">
           <label>Average sales per week
-            <input type="number" step="1" id="extraPerWeek" value="15" min="0">
+            <input type="number" step="1" id="extraPerWeek" value="20" min="0">
           </label>
           <label>Average profit per item
-            <input type="number" step="0.01" id="avgProfit" value="12">
+            <input type="number" step="0.01" id="avgProfit" value="25">
           </label>
           <label>Choose plan
             <select id="planPrice">
-              <option value="44.95">Starter — $44.95/mo</option>
-              <option value="99.95" selected>Plus — $99.95/mo</option>
-              <option value="199.95">Elite — $199.95/mo</option>
+              <option value="44.95" selected>Course — $44.95/mo</option>
+              <option value="199.95">Pro Bundle — $199.95/mo</option>
             </select>
           </label>
         </div>
@@ -416,7 +412,7 @@
     </div>
   </section>
 
-  <!-- RECENT INVENTORY WINS (10-slide rail) -->
+  <!-- RECENT INVENTORY WINS (unchanged slides) -->
   <section class="inventory" aria-label="Recent Inventory Wins">
     <div class="container">
       <span class="eyebrow">Recent Inventory Wins</span>
@@ -539,7 +535,7 @@
     </div>
   </section>
 
-  <!-- FREE PDF NOTE (banner removed) -->
+  <!-- FREE PDF NOTE (unchanged) -->
   <section class="free-pdf-note" aria-label="Getting started with no capital">
     <div class="container">
       <div class="panel">
@@ -564,7 +560,7 @@
   </section>
   <!-- /FREE PDF NOTE -->
 
-  <!-- APPLY (updated: coaching fit form) -->
+  <!-- APPLY (unchanged) -->
   <section id="apply" class="apply">
     <div class="container">
       <h2>Find your best coaching fit</h2>
@@ -662,7 +658,7 @@
     </div>
   </section>
 
-  <!-- DEEP DIVE CASE STUDY -->
+  <!-- DEEP DIVE CASE STUDY (unchanged) -->
   <section id="deep-dive" class="case-studies">
     <div class="container">
       <div class="section-eyebrow pill">Deep Dive Case Study</div>
@@ -736,7 +732,7 @@
   </section>
   <!-- /DEEP DIVE CASE STUDY -->
 
-  <!-- CASE STUDIES -->
+  <!-- CASE STUDIES (unchanged) -->
   <section id="case-studies" class="case-studies">
     <div class="container">
       <div class="section-eyebrow pill">Student Results</div>
@@ -773,7 +769,7 @@
     </div>
   </section>
 
-  <!-- GET STARTED TODAY — COMPARE PLANS (updated to 3 columns) -->
+  <!-- GET STARTED TODAY — COMPARE PLANS (synced names/details) -->
   <section id="get-started" class="pricing compare">
     <div class="container">
       <h2>Compare plans</h2>
@@ -784,9 +780,9 @@
           <thead>
             <tr>
               <th scope="col">What’s included</th>
-              <th scope="col">Starter<br><span class="price">$44.95/mo</span></th>
-              <th scope="col">Pro<br><span class="price">$99.95/mo</span></th>
-              <th scope="col">Elite<br><span class="price">$199.95/mo</span></th>
+              <th scope="col">Course<br><span class="price">$44.95/mo</span></th>
+              <th scope="col">1-on-1 Zoom Coaching<br><span class="price">$69.99/session</span></th>
+              <th scope="col">Pro Bundle<br><span class="price">$199.95/mo</span></th>
             </tr>
           </thead>
           <tbody>
@@ -797,8 +793,8 @@
             <tr>
               <td>Coaching support</td>
               <td class="muted">—</td>
-              <td>Private text — 1×/mo (45 min)</td>
-              <td>Private text — 2×/mo (90 min)</td>
+              <td>Private Zoom — 30 min (per session)</td>
+              <td>Private Zoom — 2×/month (60 min)</td>
             </tr>
             <tr>
               <td>SellEvo.app tools</td>
@@ -815,14 +811,14 @@
             <tr>
               <td>Best for</td>
               <td>DIY learners</td>
-              <td>Hands-on monthly support</td>
+              <td>Targeted Q&amp;A sessions</td>
               <td>Fast-track accountability</td>
             </tr>
             <tr>
               <td></td>
-              <td class="btn-col"><a href="#apply">Choose Starter</a></td>
-              <td class="btn-col"><a class="primary" href="#apply">Choose Pro</a></td>
-              <td class="btn-col"><a href="#apply">Choose Elite</a></td>
+              <td class="btn-col"><a href="https://6figurereseller.teachable.com/l/pdp/become-a-6-figure-reseller" target="_blank" rel="noopener">Course</a></td>
+              <td class="btn-col"><a class="primary" href="https://6figurereseller.teachable.com/l/coaching/985183/30-minute-1-on-1-coaching" target="_blank" rel="noopener">1-on-1 coaching</a></td>
+              <td class="btn-col"><a href="https://6figurereseller.teachable.com/l/bundle/699833/pro-plan" target="_blank" rel="noopener">Pro bundle</a></td>
             </tr>
           </tbody>
         </table>
@@ -910,7 +906,7 @@
       }
     })();
 
-    // ----- Plan Impact Calculator logic (updated) -----
+    // ----- Plan Impact Calculator logic (updated to Course + Pro Bundle) -----
     (function(){
       const $ = id => document.getElementById(id);
       ['extraPerWeek','avgProfit','planPrice'].forEach(id => $(id).addEventListener('input', calc));
@@ -925,12 +921,11 @@
       function applyPreset(){
         const price = parseFloat($('planPrice').value)||0;
         if(price === 44.95){
+          // Course
           $('extraPerWeek').value = 20;
           $('avgProfit').value = 25;
-        }else if(price === 99.95){
-          $('extraPerWeek').value = 40;
-          $('avgProfit').value = 25;
         }else if(price === 199.95){
+          // Pro Bundle
           $('extraPerWeek').value = 100;
           $('avgProfit').value = 25;
         }
