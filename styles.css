@@ -195,7 +195,7 @@ summary{cursor:pointer;font-weight:600}
 .wh-aside .em{color:var(--brand);font-weight:800}
 .wh-cta{margin-top:12px}
 
-/* ---------- Recent Inventory Wins (Slider) ---------- */
+/* ---------- Inventory-style Slider (base shared) ---------- */
 .inventory { padding: 56px 0; background: radial-gradient(1100px 380px at 85% -10%, rgba(52,211,153,.06), transparent); }
 .inventory .eyebrow {
   display:inline-block;background:#0f1320;border:1px solid #1a1f25;color:var(--muted);
@@ -247,6 +247,22 @@ summary{cursor:pointer;font-weight:600}
   background:#2a313a; display:inline-block; border:1px solid #1a1f25;
 }
 .inv-dots a:focus-visible { outline:2px solid var(--brand); }
+
+/* ---------- #wins Slider (portrait-friendly overrides) ---------- */
+/* Keep same slider feel but make the screenshots fit on mobile */
+#wins.inventory .inv-media{
+  aspect-ratio: 9 / 16;        /* portrait frame for eBay 90-day screenshots */
+  background:#0b0d10;
+}
+#wins.inventory .inv-media img{
+  object-fit: contain;          /* no cropping; removes weird top/bottom cutoffs */
+  padding: 6px;                 /* slight breathing room around screenshots */
+  border-radius: 10px;
+  background: #0f1320;          /* subtle card behind transparent PNG edges */
+}
+@media (min-width: 900px){
+  #wins.inventory .inv-track{ grid-auto-columns: 40%; } /* match other slider on desktop */
+}
 
 /* ---------- Compare Plans (scoped) ---------- */
 #get-started.compare .table-wrap{
@@ -336,46 +352,28 @@ summary{cursor:pointer;font-weight:600}
   .cs-media{padding:14px}
   .cs-media img{max-height:none}
 
-  /* ===== Wholesale (Reliable Inventory) mobile polish ===== */
-  .wh-card{
-    grid-template-columns:1fr;         /* single column */
-    gap:16px;
-    padding:18px;
-  }
-  .wh-copy h2{
-    font-size: clamp(1.5rem, 7vw, 1.9rem);  /* smaller headline to avoid heavy wrapping */
-    line-height:1.15;
-    margin-bottom:8px;
-  }
+  /* Wholesale (mobile polish) */
+  .wh-card{ grid-template-columns:1fr; gap:16px; padding:18px; }
+  .wh-copy h2{ font-size: clamp(1.5rem, 7vw, 1.9rem); line-height:1.15; margin-bottom:8px; }
   .wh-copy p{margin-bottom:10px}
   .wh-bullets{margin-top:6px}
   .wh-bullets li{margin:4px 0}
-  .wh-aside{
-    order:2;                            /* ensure aside appears after copy for flow */
-    padding:16px;
-  }
+  .wh-aside{ order:2; padding:16px; }
 
-  /* Inventory slider: show larger slides on mobile */
+  /* Inventory slider (mobile width of slides) */
   .inv-track { grid-auto-columns: 88%; }
 
-  /* ===== Compare Plans — mobile fit ===== */
+  /* #wins uses same width rule via base .inv-track above */
+
+  /* Compare Plans — mobile fit */
   #get-started.compare table{
     font-size: .9rem;
-    min-width: 760px;                   /* keep columns legible; enables horizontal scroll */
+    min-width: 760px;           /* keep columns legible; horizontal scroll */
   }
-  #get-started.compare th, 
-  #get-started.compare td{ 
-    padding: 10px 10px; 
-  }
-  #get-started.compare thead th{ 
-    font-size:.92rem; 
-    padding:12px 10px;
-  }
-  #get-started.compare .btn-col a{
-    padding:8px 10px;
-    font-size:.9rem;
-    white-space:nowrap;
-  }
+  #get-started.compare th,
+  #get-started.compare td{ padding: 10px 10px; }
+  #get-started.compare thead th{ font-size:.92rem; padding:12px 10px; }
+  #get-started.compare .btn-col a{ padding:8px 10px; font-size:.9rem; white-space:nowrap; }
 }
 
 /* Extra-small phones */
