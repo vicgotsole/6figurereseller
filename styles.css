@@ -409,7 +409,7 @@ summary{cursor:pointer;font-weight:600}
   flex-wrap:wrap;
 }
 .availability .item{
-  display:flex; align-items:center; gap:8px;
+  display:flex; align-items:center; justify-content:center; gap:8px;
   padding:10px 14px;
   background:var(--card);
   border:1px solid #1a1f25;
@@ -418,22 +418,22 @@ summary{cursor:pointer;font-weight:600}
   transition:transform .2s ease;
 }
 .availability .item:hover{ transform:translateY(-2px); }
-.availability .item span{ font-weight:700; color:var(--text); }
+.availability .item span{ font-weight:700; color:var(--text); white-space:nowrap; }
 .availability .svg{ width:28px; height:28px; display:block; }
 
-/* ---- Mobile tweak: keep all three on ONE LINE with smaller icons ---- */
+/* ---- Mobile: force one row (no wrapping) with smaller pills/icons ---- */
 @media (max-width: 640px){
   .availability .row{
-    flex-wrap:nowrap;            /* force one line */
-    overflow-x:auto;             /* enable gentle horizontal scroll if needed */
-    -webkit-overflow-scrolling:touch;
-    gap:12px;
-    padding:0 6px;
+    display:grid;                 /* override flex */
+    grid-template-columns:repeat(3,1fr);  /* three equal columns */
+    gap:10px;
+    justify-items:stretch;
+    align-items:stretch;
   }
   .availability .item{
-    flex:0 0 auto;               /* don’t stretch; keep compact */
-    padding:8px 10px;
+    padding:8px 6px;              /* tighter pill */
+    border-radius:10px;
   }
-  .availability .item span{ font-size:.92rem; }
-  .availability .svg{ width:20px; height:20px; } /* smaller icons */
+  .availability .item span{ font-size:.88rem; }
+  .availability .svg{ width:18px; height:18px; } /* smaller icons */
 }
