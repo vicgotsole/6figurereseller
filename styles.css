@@ -249,19 +249,12 @@ summary{cursor:pointer;font-weight:600}
 .inv-dots a:focus-visible { outline:2px solid var(--brand); }
 
 /* ---------- #wins Slider (portrait-friendly overrides) ---------- */
-/* Keep same slider feel but make the screenshots fit on mobile */
-#wins.inventory .inv-media{
-  aspect-ratio: 9 / 16;        /* portrait frame for eBay 90-day screenshots */
-  background:#0b0d10;
-}
+#wins.inventory .inv-media{ aspect-ratio: 9 / 16; background:#0b0d10; }
 #wins.inventory .inv-media img{
-  object-fit: contain;          /* no cropping; removes weird top/bottom cutoffs */
-  padding: 6px;                 /* slight breathing room around screenshots */
-  border-radius: 10px;
-  background: #0f1320;          /* subtle card behind transparent PNG edges */
+  object-fit: contain; padding: 6px; border-radius: 10px; background: #0f1320;
 }
 @media (min-width: 900px){
-  #wins.inventory .inv-track{ grid-auto-columns: 40%; } /* match other slider on desktop */
+  #wins.inventory .inv-track{ grid-auto-columns: 40%; }
 }
 
 /* ---------- Compare Plans (scoped) ---------- */
@@ -301,7 +294,7 @@ summary{cursor:pointer;font-weight:600}
   font-weight: 700;
   background: #0f1320;
   position: sticky; left: 0; z-index: 3;
-  white-space: normal; /* allow wrapping for feature text */
+  white-space: normal;
 }
 #get-started.compare tbody tr:nth-child(even) td{background:#0f1218}
 #get-started.compare tbody tr:nth-child(even) td:first-child{background:#0e1220}
@@ -321,7 +314,6 @@ summary{cursor:pointer;font-weight:600}
 
 /* ---------- Responsive (<= 960px) ---------- */
 @media (max-width: 960px){
-  /* Layout stacks */
   .hero-inner{grid-template-columns:1fr}
   .grid-3{grid-template-columns:1fr}
   .grid-2{grid-template-columns:1fr}
@@ -329,7 +321,7 @@ summary{cursor:pointer;font-weight:600}
   .form-grid{grid-template-columns:1fr}
 
   /* Header tweaks */
-  .brand img{height:88px}              /* bigger logo on mobile */
+  .brand img{height:88px}
   .brand span{font-size:1.125rem}
   .menu-toggle{display:flex}
   .nav-links{
@@ -352,7 +344,7 @@ summary{cursor:pointer;font-weight:600}
   .cs-media{padding:14px}
   .cs-media img{max-height:none}
 
-  /* Wholesale (mobile polish) */
+  /* Wholesale */
   .wh-card{ grid-template-columns:1fr; gap:16px; padding:18px; }
   .wh-copy h2{ font-size: clamp(1.5rem, 7vw, 1.9rem); line-height:1.15; margin-bottom:8px; }
   .wh-copy p{margin-bottom:10px}
@@ -363,12 +355,10 @@ summary{cursor:pointer;font-weight:600}
   /* Inventory slider (mobile width of slides) */
   .inv-track { grid-auto-columns: 88%; }
 
-  /* #wins uses same width rule via base .inv-track above */
-
   /* Compare Plans — mobile fit */
   #get-started.compare table{
     font-size: .9rem;
-    min-width: 760px;           /* keep columns legible; horizontal scroll */
+    min-width: 760px;
   }
   #get-started.compare th,
   #get-started.compare td{ padding: 10px 10px; }
@@ -385,7 +375,7 @@ summary{cursor:pointer;font-weight:600}
 }
 
 /* ---------- Available On (Devices Section) ---------- */
-/* This is additive and does not modify existing styles */
+/* Scoped styles so nothing else changes */
 .availability {
   padding: clamp(32px, 5vw, 56px) 0;
   text-align: center;
@@ -393,70 +383,57 @@ summary{cursor:pointer;font-weight:600}
   border-top: 1px solid rgba(15,23,42,.1);
   border-bottom: 1px solid rgba(15,23,42,.1);
 }
-
-.availability .heading {
-  display: inline-block;
-  text-transform: uppercase;
-  font-weight: 800;
-  font-size: 0.95rem;
-  color: var(--brand);
-  letter-spacing: 0.05em;
-  margin-bottom: 8px;
+.availability .heading{
+  display:inline-block;
+  text-transform:uppercase;
+  font-weight:800;
+  font-size:.95rem;
+  color:var(--brand);
+  letter-spacing:.05em;
+  margin-bottom:8px;
 }
-
-.availability h3 {
-  font-size: clamp(1.5rem, 2vw, 1.9rem);
-  font-weight: 800;
-  color: var(--text);
-  margin: 0 0 0.4rem;
+.availability h3{
+  font-size: clamp(1.45rem, 2vw, 1.9rem);
+  font-weight:800;
+  color:var(--text);
+  margin:0 0 .4rem;
 }
+.availability p{color:var(--muted);margin:0 0 1.2rem}
 
-.availability p {
-  color: var(--muted);
-  font-size: 1rem;
-  margin: 0 0 1.8rem;
+/* row + item */
+.availability .row{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
 }
-
-/* Row layout for device badges */
-.availability .row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 28px;
-  flex-wrap: wrap;
+.availability .item{
+  display:flex; align-items:center; gap:8px;
+  padding:10px 14px;
+  background:var(--card);
+  border:1px solid #1a1f25;
+  border-radius:12px;
+  box-shadow:0 4px 16px rgba(2,6,23,.08);
+  transition:transform .2s ease;
 }
+.availability .item:hover{ transform:translateY(-2px); }
+.availability .item span{ font-weight:700; color:var(--text); }
+.availability .svg{ width:28px; height:28px; display:block; }
 
-.availability .item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  background: var(--card);
-  border: 1px solid #1a1f25;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(2,6,23,.08);
-  transition: transform .2s ease;
-}
-
-.availability .item:hover { transform: translateY(-2px); }
-
-.availability .item span {
-  font-weight: 700;
-  color: var(--text);
-}
-
-.availability .svg {
-  width: 28px;
-  height: 28px;
-  display: block;
-}
-
-/* ---------- Mobile Adjustments for Availability ---------- */
-@media (max-width: 640px) {
-  .availability { padding: 40px 0; }
-  .availability h3 { font-size: 1.4rem; line-height: 1.3; }
-  .availability .row { flex-direction: column; gap: 18px; }
-  .availability .item { width: 85%; max-width: 320px; justify-content: center; }
-  .availability .svg { width: 24px; height: 24px; }
-  .availability .item span { font-size: 0.95rem; }
+/* ---- Mobile tweak: keep all three on ONE LINE with smaller icons ---- */
+@media (max-width: 640px){
+  .availability .row{
+    flex-wrap:nowrap;            /* force one line */
+    overflow-x:auto;             /* enable gentle horizontal scroll if needed */
+    -webkit-overflow-scrolling:touch;
+    gap:12px;
+    padding:0 6px;
+  }
+  .availability .item{
+    flex:0 0 auto;               /* don’t stretch; keep compact */
+    padding:8px 10px;
+  }
+  .availability .item span{ font-size:.92rem; }
+  .availability .svg{ width:20px; height:20px; } /* smaller icons */
 }
