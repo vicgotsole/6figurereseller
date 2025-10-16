@@ -156,10 +156,11 @@
 
     /* What’s inside */
     .inside{padding:34px 0}
-    .inside-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+    .inside-grid{display:grid; grid-template-columns:1fr; gap:22px}
     .inside .feature{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:14px}
     .inside .feature h4{margin:.25rem 0 .35rem}
     .inside .feature p{margin:0; color:var(--muted)}
+    .inside .feature ul{margin:.5rem 0 0 1rem; color:var(--muted)}
 
     /* Social proof */
     .proof{padding:28px 0}
@@ -276,6 +277,8 @@
         <!-- Netlify form -->
         <form class="form-card" name="free-pdf-optin" method="POST" data-netlify="true">
           <input type="hidden" name="form-name" value="free-pdf-optin">
+          <!-- Set the email subject line for submissions obtained via the email option -->
+          <input type="hidden" name="subject" value="Free PDF Form">
           <p style="display:none">
             <label>Don’t fill this out: <input name="bot-field"></label>
           </p>
@@ -303,19 +306,16 @@
       <div class="inside-grid">
         <div class="feature">
           <h4>50+ household items</h4>
-          <p>Specific categories with examples you can list today—from small electronics to shoes &amp; kitchen gear.</p>
-        </div>
-        <div class="feature">
-          <h4>Quick pricing checks</h4>
-          <p>How to run comps fast so you don’t miss profit—and when to bundle items for velocity.</p>
-        </div>
-        <div class="feature">
-          <h4>Listing templates</h4>
-          <p>Titles and photo tips that speed up listing and improve sell-through.</p>
-        </div>
-        <div class="feature">
-          <h4>Next steps plan</h4>
-          <p>A simple, 7-day momentum checklist to turn that cash into inventory.</p>
+          <p>A room-by-room checklist of things you likely already own that can be turned into quick cash. Each item in the guide includes plain-English examples so you can scan the house once and come back with a stack to list the same day.</p>
+          <ul>
+            <li><strong>Kitchen:</strong> vintage Pyrex, cast-iron pans, brand-name knives, sealed small-appliance parts, water filters.</li>
+            <li><strong>Closet:</strong> name-brand denim, techwear, boots, belts, hats, team gear, vintage tees.</li>
+            <li><strong>Garage:</strong> power tools, battery chargers, Carhartt/Workwear, camping gear, bike parts, coolers.</li>
+            <li><strong>Gadgets:</strong> old iPods/MP3 players, calculators, cameras, gaming controllers, remotes.</li>
+            <li><strong>Kids &amp; hobbies:</strong> LEGO lots, board games (complete), sports equipment, musical accessories.</li>
+            <li><strong>Decor &amp; misc:</strong> clocks, lamps, framed art, branded mugs/thermos, logo blankets.</li>
+          </ul>
+          <p style="margin-top:.6rem">You’ll also see quick condition cues (what wear is fine vs. a deal-breaker) and simple notes on bundling like-items from the same room to move them faster—all focused strictly on the <em>what to sell</em> list so you can act immediately.</p>
         </div>
       </div>
     </div>
